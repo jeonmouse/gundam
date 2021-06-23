@@ -1,0 +1,51 @@
+.title-button {
+    height: 28px;
+    opacity: 1;
+    -unity-font: url('project://database/Assets/UI/soyaice10.ttf?fileID=12800000&guid=ddcdfd8254d6f4070ab135567f5646e8&type=3#soyaice10');
+    font-size: 20px;
+    -unity-font-definition: none;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100px;
+    position: absolute;
+    top: 200px;
+    left: 320px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: rgba(255, 255, 255, 255);
+}
+
+.title-button:hover {
+    height: 28px;
+    opacity: 1;
+    -unity-font: url('project://database/Assets/UI/soyaice10.ttf?fileID=12800000&guid=ddcdfd8254d6f4070ab135567f5646e8&type=3#soyaice10');
+    font-size: 20px;
+    -unity-font-definition: none;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100px;
+    position: absolute;
+    top: 200px;
+    left: 320px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: rgba(102, 204, 209, 255);
+}
