@@ -10,7 +10,16 @@ public class UITitle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        
 
+        quitButton = root.Q<Button>("QuitButton");
+        quitButton.clicked += QuitButtonClicked;
+    }
+
+    void QuitButtonClicked()
+    {
+        Application.Quit();
     }
 
     // Update is called once per frame

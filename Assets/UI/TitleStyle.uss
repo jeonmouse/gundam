@@ -21,7 +21,7 @@
     border-bottom-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .title-button:hover {
@@ -47,5 +47,5 @@
     border-bottom-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    color: rgba(102, 204, 209, 255);
+    color: rgb(102, 204, 209);
 }
