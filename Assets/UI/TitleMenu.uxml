@@ -1,6 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/TitleStyle.uss?fileID=7433441132597879392&amp;guid=e7f83a2aebe7f4b4dbb8dc99ba845395&amp;type=3#TitleStyle" />
-    <ui:Button text="START" display-tooltip-when-elided="true" name="StartButton" class="title-button" style="position: absolute;" />
-    <ui:Button text="QUIT" display-tooltip-when-elided="true" name="QuitButton" class="title-button" style="top: 230px;" />
-    <ui:Label text="GUNDAM IF" display-tooltip-when-elided="true" style="-unity-font: url(&apos;project://database/Assets/UI/soyaice10.ttf?fileID=12800000&amp;guid=ddcdfd8254d6f4070ab135567f5646e8&amp;type=3#soyaice10&apos;); -unity-font-definition: none; font-size: 30px; position: absolute; left: 10px; top: 5px; color: rgb(255, 255, 255);" />
-</ui:UXML>
