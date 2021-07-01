@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TitleSound : MonoBehaviour, IPointerEnterHandler
+public class TitleSound : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     public AudioClip Clip;
 
@@ -13,7 +13,7 @@ public class TitleSound : MonoBehaviour, IPointerEnterHandler
         hover.Play();
     }
 
-    public void Click()
+    public void OnPointerClick(PointerEventData eventData)
     {
         AudioSource click = GetComponent<AudioSource>();
         click.clip = Clip;
