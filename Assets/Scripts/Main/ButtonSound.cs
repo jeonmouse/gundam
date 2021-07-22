@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TitleSound : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+public class ButtonSound : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
-    public AudioClip Clip;
+    [SerializeField] private AudioClip clip;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -16,7 +16,7 @@ public class TitleSound : MonoBehaviour, IPointerEnterHandler, IPointerClickHand
     public void OnPointerClick(PointerEventData eventData)
     {
         AudioSource click = GetComponent<AudioSource>();
-        click.clip = Clip;
+        click.clip = clip;
         click.Play();
     }
 }
