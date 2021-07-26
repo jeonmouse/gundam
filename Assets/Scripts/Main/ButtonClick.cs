@@ -8,9 +8,10 @@ namespace Main
 {
     public class ButtonClick : MonoBehaviour
     {
-        [SerializeField] private GameObject fadeImage;
-        private Image image;
+        [SerializeField] private Image fadeImage;
         private bool fadeOut = false;
+
+        [SerializeField] private AudioSource bgm;
 
         private void Update()
         {
@@ -20,24 +21,22 @@ namespace Main
 
         public void StartGame()
         {
-            //GameManager.Instance.LoadScreenTexture();
-            image = fadeImage.GetComponent<Image>();
-            StartCoroutine(FadeCoroutine());
-
-            
-            //SceneManager.LoadScene("Selection");
+            StartCoroutine(FadeOutCoroutine());
         }
 
-        IEnumerator FadeCoroutine()
+        IEnumerator FadeOutCoroutine()
         {
             for (float t = 0.0f; t <= 1.0f; t += 0.01f)
             {
                 yield return new WaitForSeconds(0.01f);
-                image.color = Color.Lerp(image.color, new Color(0, 0, 0, 1), t);
-            }
+                fadeImage.color = Color.Lerp(fadeImage.color, new Color(0, 0, 0, 1), t);
 
-            fadeOut = true;
-            yield return null;
+                if (t <= 0.50f)
+                    bgm.volume = Mathf.Lerp(1.0f, 0.0f, t * 2);
+
+                if (t >= 0.50f)
+                    fadeOut = true;
+            }
         }
 
         public void LoadGame()

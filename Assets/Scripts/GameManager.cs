@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Texture2D ScreenTexture;
-
     private void Awake()
     {
         Application.targetFrameRate = 30;
@@ -33,19 +31,5 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-    }
-
-    IEnumerator CaptureScreen()
-    {
-        Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-        yield return new WaitForEndOfFrame();
-        texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0, false);
-        texture.Apply();
-        ScreenTexture = texture;
-    }
-
-    public void LoadScreenTexture()
-    {
-        StartCoroutine(CaptureScreen());
     }
 }
