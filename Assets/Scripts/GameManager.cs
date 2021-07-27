@@ -32,4 +32,12 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+    public enum Language
+    {
+        English,
+        Japanese,
+        Korean
+    }
+    public Language LanguageSetting { get; set; } = Language.Korean;
 }

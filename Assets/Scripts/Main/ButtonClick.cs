@@ -13,14 +13,39 @@ namespace Main
 
         [SerializeField] private AudioSource bgm;
 
+        enum NextStep
+        {
+            Start,
+            Load,
+            Option,
+            Quit
+        }
+        NextStep step = NextStep.Quit;
+
         private void Update()
         {
             if (fadeOut)
-                SceneManager.LoadScene("Selection");
+            {
+                switch (step)
+                {
+                    case NextStep.Start:
+                        SceneManager.LoadScene("Selection");
+                        break;
+                    case NextStep.Load:
+                        break;
+                    case NextStep.Option:
+                        SceneManager.LoadScene("Option");
+                        break;
+                    case NextStep.Quit:
+                        Application.Quit();
+                        break;
+                }
+            }
         }
 
         public void StartGame()
         {
+            step = NextStep.Start;
             StartCoroutine(FadeOutCoroutine());
         }
 
@@ -41,18 +66,20 @@ namespace Main
 
         public void LoadGame()
         {
-            Debug.Log("load");
+            step = NextStep.Load;
+            StartCoroutine(FadeOutCoroutine());
         }
 
         public void SetOption()
         {
-            Debug.Log("option");
+            step = NextStep.Option;
+            StartCoroutine(FadeOutCoroutine());
         }
 
         public void QuitGame()
         {
-            Debug.Log("quit");
-            Application.Quit();
+            step = NextStep.Quit;
+            StartCoroutine(FadeOutCoroutine());
         }
     }
 }
