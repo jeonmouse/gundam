@@ -8,6 +8,9 @@ public class Language : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.Instance == null)
+            return;
+
         string language = GameManager.Instance.LanguageSetting.ToString();
 
         foreach (GameObject canvas in canvases)
