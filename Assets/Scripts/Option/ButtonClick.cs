@@ -9,11 +9,21 @@ namespace Option
     public class ButtonClick : MonoBehaviour
     {
         [SerializeField] private Image fadeImage;
+        [SerializeField] private Text[] langTexts;
         private bool fadeOut = false;
 
         private void Start()
         {
             StartCoroutine(FadeInCoroutine());
+
+            foreach (Text text in langTexts)
+            {
+                if (text.text.Contains(GameManager.Instance.LanguageSetting.ToString()))
+                    text.color = Color.white;
+                else
+                    text.color = Color.grey;
+            }
+
         }
 
         IEnumerator FadeInCoroutine()
@@ -25,19 +35,31 @@ namespace Option
             }
         }
 
-        public void ClickEnglish()
+        public void ClickLanguage(Text selectedText)
         {
-            GameManager.Instance.LanguageSetting = GameManager.Language.English;
+            foreach (Text text in langTexts)
+            {
+                if (text == selectedText)
+                    text.color = Color.white;
+                else
+                    text.color = Color.grey;
+            }
+
+            if (selectedText.text.Contains("English"))
+                GameManager.Instance.LanguageSetting = GameManager.Language.English;
+            else if (selectedText.text.Contains("Japanese"))
+                GameManager.Instance.LanguageSetting = GameManager.Language.Japanese;
+            else
+                GameManager.Instance.LanguageSetting = GameManager.Language.Korean;
+
         }
 
         public void ClickJapanese()
         {
-            GameManager.Instance.LanguageSetting = GameManager.Language.Japanese;
         }
 
         public void ClickKorean()
         {
-            GameManager.Instance.LanguageSetting = GameManager.Language.Korean;
         }
 
         private void Update()
