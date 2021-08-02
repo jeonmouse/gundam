@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,15 @@ public class GameManager : MonoBehaviour
             instance = value;
         }
     }
+
+    InputManager input = new InputManager();
+    public static InputManager Input { get { return Instance.input; } }
+
+    ResourceManager resource = new ResourceManager();
+    public static ResourceManager Resource { get { return Instance.resource; } }
+
+    SoundManager sound = new SoundManager();
+    public static SoundManager Sound { get { return Instance.sound; } }
 
     private void Awake()
     {
@@ -39,5 +50,5 @@ public class GameManager : MonoBehaviour
         Japanese,
         Korean
     }
-    public Language LanguageSetting { get; set; } = Language.Korean;
+    public Language LanguageSetting { get; set; } = Language.Korean;    
 }

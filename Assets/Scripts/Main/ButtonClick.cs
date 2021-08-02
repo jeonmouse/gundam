@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,9 @@ namespace Main
     public class ButtonClick : MonoBehaviour
     {
         [SerializeField] private Image fadeImage;
-        private bool fadeOut = false;
-
         [SerializeField] private AudioSource bgm;
 
-        enum NextStep
+        private enum NextStep
         {
             Start,
             Load,
@@ -21,6 +20,9 @@ namespace Main
             Quit
         }
         NextStep step = NextStep.Quit;
+
+
+        private bool fadeOut = false;
 
         private void Update()
         {
