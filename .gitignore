@@ -21,6 +21,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode/
 
 # Gradle cache directory
 .gradle/
@@ -62,4 +63,4 @@ crashlytics-build.properties
 .DS_Store
 
 # Layout file
-UserSettings/Layouts/default-2021.dwlt
+UserSettings/
