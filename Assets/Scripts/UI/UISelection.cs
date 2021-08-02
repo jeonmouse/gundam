@@ -1,16 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UISelection : MonoBehaviour
+public class UISelection : UIBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private enum Buttons
     {
-        
+        BrightButton,
+        RhysButton,
+        DominickButton,
+        LeonButton
     }
 
-    // Update is called once per frame
+    private enum Texts
+    {
+        BrightText,
+        RhysText,
+        DominickText,
+        LeonText,
+    }
+
+    private enum GameObjects
+    {
+        BrightPanel,
+        RhysPanel,
+        DominickPanel,
+        LeonPanel
+    }
+
+    private enum Images
+    {
+        FadeImage
+    }
+
+    private Image fadeImage;
+
+    void Start()
+    {
+        Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
+        Bind<GameObject>(typeof(GameObjects));
+        Bind<Image>(typeof(Images));
+
+        fadeImage = GetImage((int)Images.FadeImage);
+    }
+
     void Update()
     {
         

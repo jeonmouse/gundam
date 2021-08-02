@@ -27,6 +27,7 @@ public class UIBase : MonoBehaviour
     protected Text GetText(int index) { return Get<Text>(index); }
     protected Button GetButton(int index) { return Get<Button>(index); }
     protected Image GetImage(int index) { return Get<Image>(index); }
+    protected GameObject GetGameObject(int index) { return Get<GameObject>(index); }
 
     protected T Get<T>(int index) where T : UnityEngine.Object
     {
@@ -36,15 +37,15 @@ public class UIBase : MonoBehaviour
         return objects[index] as T;
     }
 
-    protected Text[] GetTexts()
+    protected T[] GetAll<T>() where T : UnityEngine.Object
     {
-        int count = dic[typeof(Text)].Length;
-        UnityEngine.Object[] objects = dic[typeof(Text)];
-        Text[] texts = new Text[count];
+        int count = dic[typeof(T)].Length;
+        UnityEngine.Object[] objects = dic[typeof(T)];
+        T[] texts = new T[count];
 
         for (int i = 0; i < count; i++)
         {
-            texts[i] = objects[i] as Text;
+            texts[i] = objects[i] as T;
         }
 
         return texts;

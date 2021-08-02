@@ -40,7 +40,7 @@ public class UIOption : UIBase
         fadeImage = GetImage((int)Images.FadeImage);
         StartCoroutine(FadeInCoroutine());
 
-        languageTexts = GetTexts();
+        languageTexts = GetAll<Text>();
 
         foreach (Text text in languageTexts)
         {
