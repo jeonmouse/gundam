@@ -18,4 +18,10 @@ public class DataManager
 
         Environment = JsonUtility.FromJson<EnvironmentData>(textAsset.text);
     }
+
+    public void SaveEnvironment()
+    {
+        TextAsset textAsset = GameManager.Resource.Load<TextAsset>("Data/Environment");
+        File.WriteAllText("Assets/Resources/Data/Environment.json", JsonUtility.ToJson(Environment));
+    }
 }

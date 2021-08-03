@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         if (instance != null)
         {
             Destroy(gameObject);
+            return;
         }
         else
         {
@@ -48,7 +49,11 @@ public class GameManager : MonoBehaviour
 
         instance.data.Init();
         instance.sound.Init();
-        LanguageSetting = Data.Environment.Language;
+    }
+
+    private void OnApplicationQuit()
+    {
+        data.SaveEnvironment();
     }
 
     public static void Clear()
@@ -56,6 +61,4 @@ public class GameManager : MonoBehaviour
         Input.Clear();
         Sound.Clear();
     }
-
-    public Define.Language LanguageSetting { get; set; }
 }

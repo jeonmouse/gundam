@@ -66,9 +66,9 @@ public class UISelection : UIBase
     private enum NextScene
     {
         Main,
-        StartGame
+        Dialogue
     }
-    NextScene next = NextScene.StartGame;
+    NextScene next = NextScene.Dialogue;
 
     private Image fadeImage;
     private bool fadeOut = false;
@@ -83,7 +83,7 @@ public class UISelection : UIBase
         fadeImage = GetImage((int)Images.FadeImage);
         StartCoroutine(FadeInCoroutine());
 
-        if (GameManager.Instance.LanguageSetting == Define.Language.Korean)
+        if (GameManager.Data.Environment.Language == Define.Language.Korean)
         {
             GetText((int)Texts.BrightText).text = "브라이트 노아";
             GetText((int)Texts.BrightName).text = "이름: 브라이트 노아";
@@ -113,7 +113,7 @@ public class UISelection : UIBase
             GetText((int)Texts.LeonBirth).text = "생년: 0058 (U.C.)";
             GetText((int)Texts.LeonHeight).text = "신장: 183cm";
         }
-        else if (GameManager.Instance.LanguageSetting == Define.Language.Japanese)
+        else if (GameManager.Data.Environment.Language == Define.Language.Japanese)
         {
             GetText((int)Texts.BrightText).text = "ブライト ノア";
             GetText((int)Texts.BrightName).text = "名前: ブライト ノア";
@@ -210,7 +210,7 @@ public class UISelection : UIBase
     private void OnClickStart(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
-        next = NextScene.StartGame;
+        next = NextScene.Dialogue;
         StartCoroutine(FadeOutCoroutine());
     }
 
@@ -236,8 +236,8 @@ public class UISelection : UIBase
                 case NextScene.Main:
                     SceneManager.LoadScene("Main");
                     break;
-                case NextScene.StartGame:
-                    //SceneManager.LoadScene("StartGame");
+                case NextScene.Dialogue:
+                    SceneManager.LoadScene("Dialogue");
                     break;
             }
         }

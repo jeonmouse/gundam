@@ -4,8 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class EnvironmentData
+public class SaveData
 {
-    public Define.Language Language;
     public Define.MainCharacter MainCharacter;
+    public List<Character> Characters;
+}
+
+[Serializable]
+public class Character
+{
+    public int Name;
 }

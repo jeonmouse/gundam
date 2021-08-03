@@ -109,7 +109,11 @@ public class UIMain : UIBase
                     SceneManager.LoadScene("Option");
                     break;
                 case NextScene.Quit:
+#if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+#else
                     Application.Quit();
+#endif
                     break;
             }
         }
