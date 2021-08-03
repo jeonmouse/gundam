@@ -19,14 +19,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    DataManager data = new DataManager();
+    public static DataManager Data { get { return instance.data; } }
+
     InputManager input = new InputManager();
-    public static InputManager Input { get { return Instance.input; } }
+    public static InputManager Input { get { return instance.input; } }
 
     ResourceManager resource = new ResourceManager();
-    public static ResourceManager Resource { get { return Instance.resource; } }
+    public static ResourceManager Resource { get { return instance.resource; } }
 
     SoundManager sound = new SoundManager();
-    public static SoundManager Sound { get { return Instance.sound; } }
+    public static SoundManager Sound { get { return instance.sound; } }
 
     private void Awake()
     {
@@ -43,7 +46,9 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        instance.data.Init();
         instance.sound.Init();
+        LanguageSetting = Data.Environment.Language;
     }
 
     public static void Clear()
@@ -52,11 +57,5 @@ public class GameManager : MonoBehaviour
         Sound.Clear();
     }
 
-    public enum Language
-    {
-        English,
-        Japanese,
-        Korean
-    }
-    public Language LanguageSetting { get; set; } = Language.Korean;    
+    public Define.Language LanguageSetting { get; set; }
 }

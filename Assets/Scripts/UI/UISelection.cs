@@ -83,7 +83,7 @@ public class UISelection : UIBase
         fadeImage = GetImage((int)Images.FadeImage);
         StartCoroutine(FadeInCoroutine());
 
-        if (GameManager.Instance.LanguageSetting == GameManager.Language.Korean)
+        if (GameManager.Instance.LanguageSetting == Define.Language.Korean)
         {
             GetText((int)Texts.BrightText).text = "브라이트 노아";
             GetText((int)Texts.BrightName).text = "이름: 브라이트 노아";
@@ -113,7 +113,7 @@ public class UISelection : UIBase
             GetText((int)Texts.LeonBirth).text = "생년: 0058 (U.C.)";
             GetText((int)Texts.LeonHeight).text = "신장: 183cm";
         }
-        else if (GameManager.Instance.LanguageSetting == GameManager.Language.Japanese)
+        else if (GameManager.Instance.LanguageSetting == Define.Language.Japanese)
         {
             GetText((int)Texts.BrightText).text = "ブライト ノア";
             GetText((int)Texts.BrightName).text = "名前: ブライト ノア";

@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class Define
 {
+    public enum Language
+    {
+        English,
+        Japanese,
+        Korean
+    }
+
+    public enum MainCharacter
+    {
+        Bright,
+        Rhys,
+        Dominick,
+        Leon
+    }
+
     public enum MouseEvent
     {
         Press,
