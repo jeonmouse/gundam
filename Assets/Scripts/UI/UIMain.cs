@@ -38,33 +38,56 @@ public class UIMain : UIBase
         Bind<Image>(typeof(Images));
 
         fadeImage = GetImage((int)Images.FadeImage);
+        StartCoroutine(FadeInCoroutine());
 
-        GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnStartButtonClicked);
-        GetButton((int)Buttons.LoadButton).gameObject.BindEvent(OnLoadButtonClicked);
-        GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OnOptionButtonClicked);
-        GetButton((int)Buttons.QuitButton).gameObject.BindEvent(OnQuitButtonClicked);
+        GameObject startButton = GetButton((int)Buttons.StartButton).gameObject;
+        startButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        startButton.BindEvent(OnClickStart);
+
+        GameObject loadButton = GetButton((int)Buttons.LoadButton).gameObject;
+        loadButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        loadButton.BindEvent(OnClickLoad);
+
+        GameObject optionButton = GetButton((int)Buttons.OptionButton).gameObject;
+        optionButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        optionButton.BindEvent(OnClickOption);
+
+        GameObject quitButton = GetButton((int)Buttons.QuitButton).gameObject;
+        quitButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        quitButton.BindEvent(OnClickQuit);
+
+        GameManager.Sound.Play("FirstGundamOST/Track03FromSleep", Define.Sound.Bgm);
     }
 
-    private void OnStartButtonClicked(PointerEventData data)
+    private void OnHover(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Hover");
+    }
+
+    private void OnClickStart(PointerEventData data)
+    {
+        GameManager.Sound.Play("Effect/Select");
         next = NextScene.Start;
         StartCoroutine(FadeOutCoroutine());
     }
 
-    private void OnLoadButtonClicked(PointerEventData data)
+    private void OnClickLoad(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         next = NextScene.Load;
         StartCoroutine(FadeOutCoroutine());
     }
 
-    private void OnOptionButtonClicked(PointerEventData data)
+    private void OnClickOption(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         next = NextScene.Option;
         StartCoroutine(FadeOutCoroutine());
     }
 
-    private void OnQuitButtonClicked(PointerEventData data)
+    private void OnClickQuit(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         next = NextScene.Quit;
         StartCoroutine(FadeOutCoroutine());
     }
@@ -73,6 +96,8 @@ public class UIMain : UIBase
     {
         if (fadeOut)
         {
+            GameManager.Clear();
+
             switch (next)
             {
                 case NextScene.Start:
@@ -90,6 +115,15 @@ public class UIMain : UIBase
         }
     }
 
+    IEnumerator FadeInCoroutine()
+    {
+        for (float t = 0.0f; t <= 1.0f; t += 0.01f)
+        {
+            yield return new WaitForSeconds(0.01f);
+            fadeImage.color = Color.Lerp(fadeImage.color, new Color(0, 0, 0, 0), t);
+        }
+    }
+
     IEnumerator FadeOutCoroutine()
     {
         for (float t = 0.0f; t <= 1.0f; t += 0.01f)
@@ -97,8 +131,8 @@ public class UIMain : UIBase
             yield return new WaitForSeconds(0.01f);
             fadeImage.color = Color.Lerp(fadeImage.color, new Color(0, 0, 0, 1), t);
 
-            //if (t <= 0.50f)
-            //    bgm.volume = Mathf.Lerp(1.0f, 0.0f, t * 2);
+            if (t <= 0.50f)
+                GameManager.Sound.SetSoundVolume(Mathf.Lerp(1.0f, 0.0f, t * 2));
 
             if (t >= 0.50f)
                 fadeOut = true;

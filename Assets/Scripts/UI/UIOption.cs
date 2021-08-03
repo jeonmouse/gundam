@@ -17,9 +17,10 @@ public class UIOption : UIBase
 
     private enum Texts
     {
-        EnglishText,
+        EnglishText = 0,
         JapaneseText,
-        KoreanText
+        KoreanText,
+        MaxCount
     }
 
     private enum Images
@@ -28,7 +29,6 @@ public class UIOption : UIBase
     }
 
     private Image fadeImage;
-    private Text[] languageTexts;
     private bool fadeOut;
 
     private void Start()
@@ -40,54 +40,65 @@ public class UIOption : UIBase
         fadeImage = GetImage((int)Images.FadeImage);
         StartCoroutine(FadeInCoroutine());
 
-        languageTexts = GetAll<Text>();
+        SetTextColor(GameManager.Instance.LanguageSetting.ToString());
 
-        foreach (Text text in languageTexts)
-        {
-            if (text.text.Contains(GameManager.Instance.LanguageSetting.ToString()))
-                text.color = Color.white;
-            else
-                text.color = Color.grey;
-        }
+        GameObject englishButton = GetButton((int)Buttons.EnglishButton).gameObject;
+        englishButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        englishButton.BindEvent(OnClickEnglish);
 
-        GetButton((int)Buttons.EnglishButton).gameObject.BindEvent(OnClickEnglish);
-        GetButton((int)Buttons.JapaneseButton).gameObject.BindEvent(OnClickJapanese);
-        GetButton((int)Buttons.KoreanButton).gameObject.BindEvent(OnClickKorean);
+        GameObject japaneseButton = GetButton((int)Buttons.JapaneseButton).gameObject;
+        japaneseButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        japaneseButton.BindEvent(OnClickJapanese);
 
-        GetButton((int)Buttons.ApplyButton).gameObject.BindEvent(OnClickApply);
+        GameObject koreanButton = GetButton((int)Buttons.KoreanButton).gameObject;
+        koreanButton.BindEvent(OnHover, Define.UIEvent.Hover);
+        koreanButton.BindEvent(OnClickKorean);
+
+        GameObject applybutton = GetButton((int)Buttons.ApplyButton).gameObject;
+        applybutton.BindEvent(OnHover, Define.UIEvent.Hover);
+        applybutton.BindEvent(OnClickApply);
+    }
+
+    private void OnHover(PointerEventData data)
+    {
+        GameManager.Sound.Play("Effect/Hover");
     }
 
     private void OnClickEnglish(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         SetTextColor("English");
         GameManager.Instance.LanguageSetting = GameManager.Language.English;
     }
 
     private void OnClickJapanese(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         SetTextColor("Japanese");
         GameManager.Instance.LanguageSetting = GameManager.Language.Japanese;
     }
 
     private void OnClickKorean(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         SetTextColor("Korean");
         GameManager.Instance.LanguageSetting = GameManager.Language.Korean;
     }
 
     private void OnClickApply(PointerEventData data)
     {
+        GameManager.Sound.Play("Effect/Select");
         StartCoroutine(FadeOutCoroutine());
     }
 
     private void SetTextColor(string textName)
     {
-        foreach (Text text in languageTexts)
+        for (int i = 0; i < (int)Texts.MaxCount; i++)
         {
-            if (text.text == textName)
-                text.color = Color.white;
+            if (GetText(i).text == textName)
+                GetText(i).color = Color.white;
             else
-                text.color = Color.grey;
+                GetText(i).color = Color.grey;
         }
     }
 

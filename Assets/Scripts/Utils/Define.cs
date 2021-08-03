@@ -15,4 +15,11 @@ public class Define
         Click,
         Hover
     }
+
+    public enum Sound
+    {
+        Bgm,
+        Effect,
+        MaxCount
+    }
 }

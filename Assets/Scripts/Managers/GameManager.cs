@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        instance.sound.Init();
+    }
+
+    public static void Clear()
+    {
+        Input.Clear();
+        Sound.Clear();
     }
 
     public enum Language
