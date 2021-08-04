@@ -10,6 +10,8 @@ public class InputManager
     public Action<Define.MouseEvent> MouseAction = null;
 
     bool pressed = false;
+    float pressedTime = 0;
+
     public void OnUpdate()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -22,14 +24,28 @@ public class InputManager
         {
             if (Input.GetMouseButton(0))
             {
+                if (!pressed)
+                {
+                    MouseAction.Invoke(Define.MouseEvent.Down);
+                    pressedTime = Time.time;
+                }
+                else if (Time.time < pressedTime + 3.0f)
+                {
+                    MouseAction.Invoke(Define.MouseEvent.Hold);
+                }
                 MouseAction.Invoke(Define.MouseEvent.Press);
                 pressed = true;
             }
             else
             {
                 if (pressed)
-                    MouseAction.Invoke(Define.MouseEvent.Click);
+                {
+                    if (Time.time < pressedTime + 0.2f)
+                        MouseAction.Invoke(Define.MouseEvent.Click);
+                    MouseAction.Invoke(Define.MouseEvent.Up);
+                }
                 pressed = false;
+                pressedTime = 0;
             }
         }
     }

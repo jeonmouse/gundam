@@ -4,14 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class SaveData
+public class CommonData : MonoBehaviour
 {
     public Define.MainCharacter MainCharacter;
-    public List<Character> Characters;
-}
-
-[Serializable]
-public class Character
-{
-    public int Name;
 }

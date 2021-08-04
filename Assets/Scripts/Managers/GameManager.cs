@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
         instance.sound.Init();
     }
 
+    private void Update()
+    {
+        input.OnUpdate();
+    }
+
     private void OnApplicationQuit()
     {
         data.SaveEnvironment();

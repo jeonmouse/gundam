@@ -22,6 +22,9 @@ public class Define
     public enum MouseEvent
     {
         Press,
+        Down,
+        Up,
+        Hold,
         Click
     }
 
@@ -36,5 +39,27 @@ public class Define
         Bgm,
         Effect,
         MaxCount
+    }
+
+    public enum Rank
+    {
+        SeamanRecruit,
+        SeamanApprentice,
+        Seaman,
+        PettyOfficer2ndClass,
+        WarrantOfficer,
+        PettyOfficer1stClass,
+        ChiefPettyOfficer,
+        SeniorChiefPettyOfficer,
+        Ensign,
+        LieutenantJuniorGrade,
+        Lieutenant,
+        LieutenantCommander,
+        Commander,
+        Captain,
+        RearAdmiralLower,
+        RearAdmiral,
+        ViceAdmiral,
+        Admiral
     }
 }
