@@ -10,6 +10,26 @@
             "Number": 1,
             "Speaker": "Tem",
             "Content": "Very well. Your name is <MainCharacter>, isn't it?"
+        },
+        {
+            "Number": 2,
+            "Speaker": "<MainCharacter>",
+            "Content": "Yes, Sir"
+        },
+        {
+            "Number": 3,
+            "Speaker": "Tem",
+            "Content": "How long have you been in the military?"
+        },
+        {
+            "Number": 4,
+            "Speaker": "<MainCharacter>",
+            "Content": "6 months, sir/6 months, sir/3 years, sir/2 years, sir"
+        },
+        {
+            "Number": 5,
+            "Speaker": "Tem",
+            "Content": "Once we mass-produce the Gundam, we'll be able to end the war without sending young men like you into battle."
         }
     ]
 }

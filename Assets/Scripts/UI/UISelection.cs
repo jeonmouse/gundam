@@ -55,7 +55,8 @@ public class UISelection : UIBase
         LeonAffiliation,
         LeonRank,
         LeonBirth,
-        LeonHeight
+        LeonHeight,
+        MaxCount
     }
 
     private enum Images
@@ -143,6 +144,8 @@ public class UISelection : UIBase
             GetText((int)Texts.LeonRank).text = "階級: 少尉";
             GetText((int)Texts.LeonBirth).text = "生年: 0058 (U.C.)";
             GetText((int)Texts.LeonHeight).text = "身長: 183cm";
+
+            SetJapaneseFont();
         }
 
         SetMainCharacter("Bright");
@@ -170,6 +173,16 @@ public class UISelection : UIBase
         GameObject backButrton = GetButton((int)Buttons.BackToMainButton).gameObject;
         backButrton.BindEvent(OnHover, Define.UIEvent.Hover);
         backButrton.BindEvent(OnClickBack);
+    }
+
+    private void SetJapaneseFont()
+    {
+        for (int i = 0; i < (int)Texts.MaxCount; i++)
+        {
+            GetText(i).font = GameManager.Resource.Load<Font>("Fonts/PixelMplus10");
+            if (GetText(i).fontSize == 20)
+                GetText(i).fontSize = 15;
+        }
     }
 
     private void OnHover(PointerEventData data)

@@ -8,7 +8,8 @@ public class UIDialogue : UIBase
     private enum Texts
     {
         SpeakerText,
-        ContentText
+        ContentText,
+        MaxCount
     }
 
     private enum Images
@@ -34,7 +35,7 @@ public class UIDialogue : UIBase
         Bind<RawImage>(typeof(RawImages));
 
         GameManager.Input.MouseAction += MouseAction;
-        
+
         fadeImage = GetImage((int)Images.FadeImage);
         StartCoroutine(FadeInCoroutine());
 
@@ -50,6 +51,8 @@ public class UIDialogue : UIBase
         else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Leon)
             GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/LeonMarcenas");
 
+        if (GameManager.Data.Environment.Language == Define.Language.Japanese) SetJapaneseFont();
+
         SetScript();
     }
 
@@ -57,18 +60,44 @@ public class UIDialogue : UIBase
     {
         if (evt == Define.MouseEvent.Click)
         {
-            if (scriptNum > 1) return;
-
             scriptNum++;
             SetScript();
         }
     }
 
+    private void SetJapaneseFont()
+    {
+        for (int i = 0; i < (int)Texts.MaxCount; i++)
+        {
+            GetText(i).font = GameManager.Resource.Load<Font>("Fonts/PixelMplus10");
+            if (GetText(i).fontSize == 20)
+                GetText(i).fontSize = 15;
+        }
+    }
+
     private void SetScript()
     {
+        if (scriptNum > GameManager.Data.Scripts.Count - 1) return;
+
         Script script = GameManager.Data.Scripts[scriptNum];
-        GetText((int)Texts.SpeakerText).text = script.Speaker.Replace("<MainCharacter>", mainChar);
-        GetText((int)Texts.ContentText).text = script.Content.Replace("<MainCharacter>", mainChar);
+        string speaker = script.Speaker.Replace("<MainCharacter>", mainChar);
+        string content = script.Content.Replace("<MainCharacter>", mainChar);
+
+        if (content.Contains("/"))
+        {
+            string[] strArray = content.Split('/');
+            if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Bright)
+                content = strArray[0];
+            else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Rhys)
+                content = strArray[1];
+            if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Dominick)
+                content = strArray[2];
+            if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Leon)
+                content = strArray[3];
+        }
+
+        GetText((int)Texts.SpeakerText).text = speaker;
+        GetText((int)Texts.ContentText).text = content;
     }
 
     private IEnumerator FadeInCoroutine()

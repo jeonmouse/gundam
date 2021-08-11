@@ -9,7 +9,27 @@
         {
             "Number": 1,
             "Speaker": "テム",
-            "Content": "ん、了解した」, <MainCharacter>君といったね?"
+            "Content": "ん、了解した, <MainCharacter>君といったね?"
+        },
+        {
+            "Number": 2,
+            "Speaker": "<MainCharacter>",
+            "Content": "はい"
+        },
+        {
+            "Number": 3,
+            "Speaker": "テム",
+            "Content": "何ヶ月になるね？軍に入って?"
+        },
+        {
+            "Number": 4,
+            "Speaker": "<MainCharacter>",
+            "Content": "6ヶ月であります/6ヶ月であります/3年であります/2年であります"
+        },
+        {
+            "Number": 5,
+            "Speaker": "テム",
+            "Content": "ガンダムが量産されるようになれば、君のような若者が実戦に出なくとも戦争は終わろう"
         }
     ]
 }

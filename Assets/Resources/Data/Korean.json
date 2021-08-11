@@ -4,12 +4,32 @@
         {
             "Number": 0,
             "Speaker": "<MainCharacter>",
-            "Content": "레이 대위님, 사이드 7에 입항했습니다. 즉시 브릿지로 와 주십시오."
+            "Content": "레이 대위님, 사이드 7에 입항했습니다. 즉시 브릿지로 와 주십시오"
         },
         {
             "Number": 1,
             "Speaker": "템",
             "Content": "음. 알았네. <MainCharacter> 군이라고 했지?"
+        },
+        {
+            "Number": 2,
+            "Speaker": "<MainCharacter>",
+            "Content": "예"
+        },
+        {
+            "Number": 3,
+            "Speaker": "템",
+            "Content": "입대한 지 얼마나 됐나?"
+        },
+        {
+            "Number": 4,
+            "Speaker": "<MainCharacter>",
+            "Content": "6개월입니다/6개월입니다/3년입니다/2년입니다"
+        },
+        {
+            "Number": 5,
+            "Speaker": "템",
+            "Content": "건담이 양산되면 자네같은 젊은 친구들이 안 싸워도 전쟁은 끝날 걸세"
         }
     ]
 }

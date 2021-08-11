@@ -24,6 +24,16 @@ public class UIMain : UIBase
         QuitButton
     }
 
+    private enum Texts
+    {
+        TitleText,
+        StartText,
+        LoadText,
+        OptionText,
+        QuitText,
+        MaxCount
+    }
+
     private enum Images
     {
         FadeImage
@@ -35,7 +45,10 @@ public class UIMain : UIBase
     private void Start()
     {
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
+
+        FontPixelPerfect();
 
         fadeImage = GetImage((int)Images.FadeImage);
         StartCoroutine(FadeInCoroutine());
@@ -57,6 +70,11 @@ public class UIMain : UIBase
         quitButton.BindEvent(OnClickQuit);
 
         GameManager.Sound.Play("FirstGundamOST/Track03FromSleep", Define.Sound.Bgm);
+    }
+
+    private void FontPixelPerfect()
+    {
+        GameManager.Resource.Load<Font>("Fonts/SoyaIce10").material.mainTexture.filterMode = FilterMode.Point;
     }
 
     private void OnHover(PointerEventData data)
