@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class CommonData : MonoBehaviour
+public class CommonData
 {
     public Define.MainCharacter MainCharacter;
 }

@@ -1,0 +1,15 @@
+{
+
+    "Scripts": [
+        {
+            "Number": 0,
+            "Speaker": "<MainCharacter>",
+            "Content": "Excuse me, Lieutenant Ray, We're docking at Side 7 now. Please report to the bridge at once."
+        },
+        {
+            "Number": 1,
+            "Speaker": "Tem",
+            "Content": "Very well. Your name is <MainCharacter>, isn't it?"
+        }
+    ]
+}

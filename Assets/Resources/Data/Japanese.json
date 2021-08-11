@@ -1,0 +1,15 @@
+{
+
+    "Scripts": [
+        {
+            "Number": 0,
+            "Speaker": "<MainCharacter>",
+            "Content": "伝令。レイ大尉、サイド７へ入港いたしました。至急、ブリッジへおいでください"
+        },
+        {
+            "Number": 1,
+            "Speaker": "テム",
+            "Content": "ん、了解した」, <MainCharacter>君といったね?"
+        }
+    ]
+}

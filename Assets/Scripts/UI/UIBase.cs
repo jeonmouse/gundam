@@ -27,6 +27,7 @@ public class UIBase : MonoBehaviour
     protected Text GetText(int index) { return Get<Text>(index); }
     protected Button GetButton(int index) { return Get<Button>(index); }
     protected Image GetImage(int index) { return Get<Image>(index); }
+    protected RawImage GetRawImage(int index) { return Get<RawImage>(index); }
     protected GameObject GetGameObject(int index) { return Get<GameObject>(index); }
 
     protected T Get<T>(int index) where T : UnityEngine.Object

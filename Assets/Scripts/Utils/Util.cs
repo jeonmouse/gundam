@@ -48,4 +48,41 @@ public class Util
 
         return null;
     }
+
+    public static string GetMainCharacterName(Define.Language language, Define.MainCharacter mainChar)
+    {
+        if (language == Define.Language.English)
+        {
+            if (mainChar == Define.MainCharacter.Bright)
+                return "Bright";
+            else if (mainChar == Define.MainCharacter.Rhys)
+                return "Rhys";
+            else if (mainChar == Define.MainCharacter.Dominick)
+                return "Dominick";
+            else
+                return "Leon";
+        }
+        else if (language == Define.Language.Japanese)
+        {
+            if (mainChar == Define.MainCharacter.Bright)
+                return "ブライト";
+            else if (mainChar == Define.MainCharacter.Rhys)
+                return "リース";
+            else if (mainChar == Define.MainCharacter.Dominick)
+                return "ドミニク";
+            else
+                return "レオン";
+        }
+        else
+        {
+            if (mainChar == Define.MainCharacter.Bright)
+                return "브라이트";
+            else if (mainChar == Define.MainCharacter.Rhys)
+                return "리스";
+            else if (mainChar == Define.MainCharacter.Dominick)
+                return "도미닉";
+            else
+                return "레온";
+        }
+    }
 }

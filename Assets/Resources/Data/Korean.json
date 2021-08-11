@@ -1,0 +1,15 @@
+{
+
+    "Scripts": [
+        {
+            "Number": 0,
+            "Speaker": "<MainCharacter>",
+            "Content": "레이 대위님, 사이드 7에 입항했습니다. 즉시 브릿지로 와 주십시오."
+        },
+        {
+            "Number": 1,
+            "Speaker": "템",
+            "Content": "음. 알았네. <MainCharacter> 군이라고 했지?"
+        }
+    ]
+}

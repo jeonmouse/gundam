@@ -69,6 +69,7 @@ public class UIOption : UIBase
         GameManager.Sound.Play("Effect/Select");
         SetTextColor("English");
         GameManager.Data.Environment.Language = Define.Language.English;
+        GameManager.Data.SetLanguage(Define.Language.English);
     }
 
     private void OnClickJapanese(PointerEventData data)
@@ -76,6 +77,7 @@ public class UIOption : UIBase
         GameManager.Sound.Play("Effect/Select");
         SetTextColor("Japanese");
         GameManager.Data.Environment.Language = Define.Language.Japanese;
+        GameManager.Data.SetLanguage(Define.Language.Japanese);
     }
 
     private void OnClickKorean(PointerEventData data)
@@ -83,6 +85,7 @@ public class UIOption : UIBase
         GameManager.Sound.Play("Effect/Select");
         SetTextColor("Korean");
         GameManager.Data.Environment.Language = Define.Language.Korean;
+        GameManager.Data.SetLanguage(Define.Language.Korean);
     }
 
     private void OnClickApply(PointerEventData data)

@@ -72,6 +72,7 @@ public class UISelection : UIBase
 
     private Image fadeImage;
     private bool fadeOut = false;
+    private Define.MainCharacter mainChar = Define.MainCharacter.Bright;
 
     void Start()
     {
@@ -179,24 +180,28 @@ public class UISelection : UIBase
     private void OnClickBright(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
+        mainChar = Define.MainCharacter.Bright;
         SetMainCharacter("Bright");
     }
 
     private void OnClickRhys(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
+        mainChar = Define.MainCharacter.Rhys;
         SetMainCharacter("Rhys");
     }
 
     private void OnClickDominick(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
+        mainChar = Define.MainCharacter.Dominick;
         SetMainCharacter("Dominick");
     }
 
     private void OnClickLeon(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
+        mainChar = Define.MainCharacter.Leon;
         SetMainCharacter("Leon");
     }
 
@@ -211,6 +216,7 @@ public class UISelection : UIBase
     {
         GameManager.Sound.Play("Effect/Select");
         next = NextScene.Dialogue;
+        GameManager.Data.Common.MainCharacter = mainChar;
         StartCoroutine(FadeOutCoroutine());
     }
 
