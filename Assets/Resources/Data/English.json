@@ -30,6 +30,31 @@
             "Number": 5,
             "Speaker": "Tem",
             "Content": "Once we mass-produce the Gundam, we'll be able to end the war without sending young men like you into battle."
+        },
+        {
+            "Number": 6,
+            "Speaker": "Select2",
+            "Content": "Is that your son, sir?/It's your son. What's his name?"
+        },
+        {
+            "Number": 7,
+            "Speaker": "Tem",
+            "Content": "Yes. I hear there are boys his age fighting as guerrillas. Is that true?"
+        },
+        {
+            "Number": 8,
+            "Speaker": "<MainCharacter>",
+            "Content": "Yes, I'm told that it happens."
+        },
+        {
+            "Number": 9,
+            "Speaker": "Tem",
+            "Content": "How terrible."
+        },
+        {
+            "Number": 10,
+            "Speaker": "Tem",
+            "Content": "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
         }
     ]
 }

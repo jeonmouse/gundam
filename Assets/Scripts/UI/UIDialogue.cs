@@ -9,7 +9,15 @@ public class UIDialogue : UIBase
     {
         SpeakerText,
         ContentText,
+        SelectText2_1,
+        SelectText2_2,
         MaxCount
+    }
+
+    private enum Buttons
+    {
+        SelectButton2_1,
+        SelectButton2_2
     }
 
     private enum Images
@@ -23,6 +31,11 @@ public class UIDialogue : UIBase
         RightImage
     }
 
+    private enum GameObjects
+    {
+        SelectPanel2
+    }
+
     private Image fadeImage;
     private bool fadeOut = false;
     private string mainChar;
@@ -31,8 +44,10 @@ public class UIDialogue : UIBase
     private void Start()
     {
         Bind<Text>(typeof(Texts));
+        Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
         Bind<RawImage>(typeof(RawImages));
+        Bind<GameObject>(typeof(GameObjects));
 
         GameManager.Input.MouseAction += MouseAction;
 
@@ -53,6 +68,7 @@ public class UIDialogue : UIBase
 
         if (GameManager.Data.Environment.Language == Define.Language.Japanese) SetJapaneseFont();
 
+        GetGameObject((int)GameObjects.SelectPanel2).SetActive(false);
         SetScript();
     }
 
@@ -80,24 +96,44 @@ public class UIDialogue : UIBase
         if (scriptNum > GameManager.Data.Scripts.Count - 1) return;
 
         Script script = GameManager.Data.Scripts[scriptNum];
-        string speaker = script.Speaker.Replace("<MainCharacter>", mainChar);
-        string content = script.Content.Replace("<MainCharacter>", mainChar);
+        string speaker = script.Speaker;
 
-        if (content.Contains("/"))
+        if (speaker.Contains("Select"))
         {
-            string[] strArray = content.Split('/');
-            if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Bright)
-                content = strArray[0];
-            else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Rhys)
-                content = strArray[1];
-            if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Dominick)
-                content = strArray[2];
-            if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Leon)
-                content = strArray[3];
-        }
+            GetText((int)Texts.ContentText).gameObject.SetActive(false);
+            GetGameObject((int)GameObjects.SelectPanel2).SetActive(true);
 
-        GetText((int)Texts.SpeakerText).text = speaker;
-        GetText((int)Texts.ContentText).text = content;
+            int selectCount = int.Parse(speaker.Substring(speaker.Length - 1));
+            if (selectCount == 2)
+            {
+                string[] contents = script.Content.Split('/');
+
+                GetText((int)Texts.SpeakerText).text = mainChar;
+                GetText((int)Texts.SelectText2_1).text = contents[0];
+                GetText((int)Texts.SelectText2_2).text = contents[1];
+            }
+        }
+        else
+        {
+            speaker = speaker.Replace("<MainCharacter>", mainChar);
+            string content = script.Content.Replace("<MainCharacter>", mainChar);
+
+            if (content.Contains("/"))
+            {
+                string[] strArray = content.Split('/');
+                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Bright)
+                    content = strArray[0];
+                else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Rhys)
+                    content = strArray[1];
+                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Dominick)
+                    content = strArray[2];
+                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Leon)
+                    content = strArray[3];
+            }
+
+            GetText((int)Texts.SpeakerText).text = speaker;
+            GetText((int)Texts.ContentText).text = content;
+        }
     }
 
     private IEnumerator FadeInCoroutine()
