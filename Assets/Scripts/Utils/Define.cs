@@ -62,4 +62,9 @@ public class Define
         ViceAdmiral,
         Admiral
     }
+
+    public enum DialogueEvent
+    {
+        AskAmuroName = 6
+    }
 }

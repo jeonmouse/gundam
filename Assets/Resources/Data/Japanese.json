@@ -43,18 +43,18 @@
         },
         {
             "Number": 8,
+            "Speaker": "テム",
+            "Content": "アムロです。 こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
+        },
+        {
+            "Number": 9,
             "Speaker": "<MainCharacter>",
             "Content": "はい、事実だそうであります"
         },
         {
-            "Number": 9,
-            "Speaker": "テム",
-            "Content": "嫌だねえ"
-        },
-        {
             "Number": 10,
             "Speaker": "テム",
-            "Content": "アムロです。 こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
+            "Content": "嫌だねえ"
         }
     ]
 }

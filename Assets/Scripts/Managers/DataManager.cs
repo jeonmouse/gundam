@@ -49,4 +49,17 @@ public class DataManager
         TextAsset textAsset = GameManager.Resource.Load<TextAsset>($"Data/{path}");
         return JsonUtility.FromJson<Loader>(textAsset.text);
     }
+
+    public void SetEventFlag(int id, int select)
+    {
+        switch (id)
+        {
+            case (int)Define.DialogueEvent.AskAmuroName:
+                if (select == 1)
+                    Common.AskAmuroName = false;
+                else
+                    Common.AskAmuroName = true;
+                break;
+        }
+    }
 }

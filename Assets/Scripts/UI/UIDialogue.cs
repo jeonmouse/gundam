@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIDialogue : UIBase
@@ -40,6 +41,10 @@ public class UIDialogue : UIBase
     private bool fadeOut = false;
     private string mainChar;
     private int scriptNum = 0;
+    private bool eventOccurred = false;
+    private bool buttonClicked = false;
+    private int lastId = -1;
+    private int joinId = -1;
 
     private void Start()
     {
@@ -68,16 +73,61 @@ public class UIDialogue : UIBase
 
         if (GameManager.Data.Environment.Language == Define.Language.Japanese) SetJapaneseFont();
 
+        GameObject select2_1Button = GetButton((int)Buttons.SelectButton2_1).gameObject;
+        select2_1Button.BindEvent(OnHover, Define.UIEvent.Hover);
+        select2_1Button.BindEvent(OnClickButton2_1);
+
+        GameObject select2_2Button = GetButton((int)Buttons.SelectButton2_2).gameObject;
+        select2_2Button.BindEvent(OnHover, Define.UIEvent.Hover);
+        select2_2Button.BindEvent(OnClickButton2_2);
+
+        GetGameObject((int)GameObjects.SelectPanel2).SetActive(false);
+        SetScript();
+    }
+
+    private void OnHover(PointerEventData data)
+    {
+        GameManager.Sound.Play("Effect/Hover");
+    }
+
+    private void OnClickButton2_1(PointerEventData data)
+    {
+        Event.GetDialogueEventValues(scriptNum, 1, out int nextId, out int lastId, out int joinId);
+        GameManager.Data.SetEventFlag(scriptNum, 1);
+        RestartDialogue(nextId, lastId, joinId);
+    }
+
+    private void OnClickButton2_2(PointerEventData data)
+    {
+        Event.GetDialogueEventValues(scriptNum, 2, out int nextId, out int lastId, out int joinId);
+        GameManager.Data.SetEventFlag(scriptNum, 2);
+        RestartDialogue(nextId, lastId, joinId);
+    }
+
+    private void RestartDialogue(int nextId, int lastId, int joinId)
+    {
+        GameManager.Sound.Play("Effect/Select");
+        scriptNum = nextId;
+        this.lastId = lastId;
+        this.joinId = joinId;
+        eventOccurred = false;
+        buttonClicked = true;
+        GetText((int)Texts.ContentText).gameObject.SetActive(true);
         GetGameObject((int)GameObjects.SelectPanel2).SetActive(false);
         SetScript();
     }
 
     private void MouseAction(Define.MouseEvent evt)
     {
-        if (evt == Define.MouseEvent.Click)
+        if (evt == Define.MouseEvent.Click && !eventOccurred && !buttonClicked)
         {
-            scriptNum++;
+            GameManager.Sound.Play("Effect/Flip");
             SetScript();
+        }
+
+        if (buttonClicked)
+        {
+            buttonClicked = false;
         }
     }
 
@@ -111,6 +161,7 @@ public class UIDialogue : UIBase
                 GetText((int)Texts.SpeakerText).text = mainChar;
                 GetText((int)Texts.SelectText2_1).text = contents[0];
                 GetText((int)Texts.SelectText2_2).text = contents[1];
+                eventOccurred = true;
             }
         }
         else
@@ -133,6 +184,11 @@ public class UIDialogue : UIBase
 
             GetText((int)Texts.SpeakerText).text = speaker;
             GetText((int)Texts.ContentText).text = content;
+
+            if (scriptNum == lastId)
+                scriptNum = joinId;
+            else
+                scriptNum++;
         }
     }
 

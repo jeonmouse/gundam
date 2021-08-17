@@ -43,18 +43,18 @@
         },
         {
             "Number": 8,
+            "Speaker": "템",
+            "Content": "아, 아무로라네. 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
+        },
+        {
+            "Number": 9,
             "Speaker": "<MainCharacter>",
             "Content": "네, 그렇다고 합니다"
         },
         {
-            "Number": 9,
-            "Speaker": "템",
-            "Content": "끔찍하군"
-        },
-        {
             "Number": 10,
             "Speaker": "템",
-            "Content": "아, 아무로라네. 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
+            "Content": "끔찍하군"
         }
     ]
 }

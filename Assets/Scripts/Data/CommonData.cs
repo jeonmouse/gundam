@@ -7,4 +7,5 @@ using UnityEngine;
 public class CommonData
 {
     public Define.MainCharacter MainCharacter;
+    public bool AskAmuroName;
 }

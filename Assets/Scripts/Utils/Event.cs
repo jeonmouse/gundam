@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class Event
+{
+    public static void GetDialogueEventValues(int id, int select, out int nextId, out int lastId, out int joinId)
+    {
+        nextId = 0;
+        lastId = 0;
+        joinId = 0;
+
+        switch (id)
+        {
+            case (int)Define.DialogueEvent.AskAmuroName:
+                if (select == 1)
+                {
+                    nextId = 7;
+                    lastId = 7;
+                    joinId = 9;
+                }
+                else if (select == 2)
+                {
+                    nextId = 8;
+                    lastId = 8;
+                    joinId = 9;
+                }
+                break;
+        }
+    }
+}

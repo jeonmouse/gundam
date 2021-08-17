@@ -43,18 +43,18 @@
         },
         {
             "Number": 8,
+            "Speaker": "Tem",
+            "Content": "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
+        },
+        {
+            "Number": 9,
             "Speaker": "<MainCharacter>",
             "Content": "Yes, I'm told that it happens."
         },
         {
-            "Number": 9,
-            "Speaker": "Tem",
-            "Content": "How terrible."
-        },
-        {
             "Number": 10,
             "Speaker": "Tem",
-            "Content": "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
+            "Content": "How terrible."
         }
     ]
 }
