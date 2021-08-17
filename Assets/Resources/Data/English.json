@@ -33,26 +33,31 @@
         },
         {
             "Number": 6,
-            "Speaker": "Select2",
-            "Content": "Is that your son, sir?/It's your son. What's his name?"
+            "Speaker": "<MainCharacter>",
+            "Content": "That picture is..."
         },
         {
             "Number": 7,
-            "Speaker": "Tem",
-            "Content": "Yes. I hear there are boys his age fighting as guerrillas. Is that true?"
+            "Speaker": "Select2",
+            "Content": "Your son, sir?/Maybe your son. What's his name?"
         },
         {
             "Number": 8,
             "Speaker": "Tem",
-            "Content": "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
+            "Content": "Yes. I hear there are boys his age fighting as guerrillas. Is that true?"
         },
         {
             "Number": 9,
+            "Speaker": "Tem",
+            "Content": "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
+        },
+        {
+            "Number": 10,
             "Speaker": "<MainCharacter>",
             "Content": "Yes, I'm told that it happens."
         },
         {
-            "Number": 10,
+            "Number": 11,
             "Speaker": "Tem",
             "Content": "How terrible."
         }

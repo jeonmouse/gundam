@@ -15,15 +15,15 @@ public static class Event
             case (int)Define.DialogueEvent.AskAmuroName:
                 if (select == 1)
                 {
-                    nextId = 7;
-                    lastId = 7;
-                    joinId = 9;
+                    nextId = 8;
+                    lastId = 8;
+                    joinId = 10;
                 }
                 else if (select == 2)
                 {
-                    nextId = 8;
-                    lastId = 8;
-                    joinId = 9;
+                    nextId = 9;
+                    lastId = 9;
+                    joinId = 10;
                 }
                 break;
         }

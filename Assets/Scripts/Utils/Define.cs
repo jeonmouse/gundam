@@ -65,6 +65,6 @@ public class Define
 
     public enum DialogueEvent
     {
-        AskAmuroName = 6
+        AskAmuroName = 7
     }
 }

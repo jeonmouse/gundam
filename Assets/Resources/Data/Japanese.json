@@ -33,26 +33,31 @@
         },
         {
             "Number": 6,
+            "Speaker": "<MainCharacter>",
+            "Content": "あの写真は···"
+        },
+        {
+            "Number": 7,
             "Speaker": "Select2",
             "Content": "お子様でらっしゃいますか？/息子さんですね。 お名前は何ですか?"
         },
         {
-            "Number": 7,
+            "Number": 8,
             "Speaker": "テム",
             "Content": "ああ。こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
         },
         {
-            "Number": 8,
+            "Number": 9,
             "Speaker": "テム",
             "Content": "アムロです。 こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
         },
         {
-            "Number": 9,
+            "Number": 10,
             "Speaker": "<MainCharacter>",
             "Content": "はい、事実だそうであります"
         },
         {
-            "Number": 10,
+            "Number": 11,
             "Speaker": "テム",
             "Content": "嫌だねえ"
         }

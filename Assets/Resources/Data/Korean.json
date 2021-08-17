@@ -24,7 +24,7 @@
         {
             "Number": 4,
             "Speaker": "<MainCharacter>",
-            "Content": "6개월입니다/6개월입니다/3년입니다/2년입니다"
+            "Content": "6개월입니다"
         },
         {
             "Number": 5,
@@ -33,26 +33,31 @@
         },
         {
             "Number": 6,
+            "Speaker": "<MainCharacter>",
+            "Content": "저 사진은..."
+        },
+        {
+            "Number": 7,
             "Speaker": "Select2",
             "Content": "아드님이십니까?/아드님 이군요. 이름은 어떻게 되나요?"
         },
         {
-            "Number": 7,
+            "Number": 8,
             "Speaker": "템",
             "Content": "그래, 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
         },
         {
-            "Number": 8,
+            "Number": 9,
             "Speaker": "템",
             "Content": "아, 아무로라네. 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
         },
         {
-            "Number": 9,
+            "Number": 10,
             "Speaker": "<MainCharacter>",
             "Content": "네, 그렇다고 합니다"
         },
         {
-            "Number": 10,
+            "Number": 11,
             "Speaker": "템",
             "Content": "끔찍하군"
         }

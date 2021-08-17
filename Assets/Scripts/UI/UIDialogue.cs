@@ -125,7 +125,7 @@ public class UIDialogue : UIBase
             SetScript();
         }
 
-        if (buttonClicked)
+        if (evt == Define.MouseEvent.Click && buttonClicked)
         {
             buttonClicked = false;
         }

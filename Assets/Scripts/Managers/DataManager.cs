@@ -24,6 +24,7 @@ public class DataManager
 
     public void SetLanguage(Define.Language language)
     {
+        Scripts.Clear();
         Scripts = LoadJson<ScriptData, int, Script>(language.ToString()).MakeDic();
     }
 
