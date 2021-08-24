@@ -53,33 +53,33 @@ public class Util
     {
         if (language == Define.Language.English)
         {
-            if (mainChar == Define.MainCharacter.Bright)
+            if (mainChar == Define.MainCharacter.BrightNoa)
                 return "Bright";
-            else if (mainChar == Define.MainCharacter.Rhys)
+            else if (mainChar == Define.MainCharacter.RhysJeon)
                 return "Rhys";
-            else if (mainChar == Define.MainCharacter.Dominick)
+            else if (mainChar == Define.MainCharacter.DominickWilliam)
                 return "Dominick";
             else
                 return "Leon";
         }
         else if (language == Define.Language.Japanese)
         {
-            if (mainChar == Define.MainCharacter.Bright)
+            if (mainChar == Define.MainCharacter.BrightNoa)
                 return "ブライト";
-            else if (mainChar == Define.MainCharacter.Rhys)
+            else if (mainChar == Define.MainCharacter.RhysJeon)
                 return "リース";
-            else if (mainChar == Define.MainCharacter.Dominick)
+            else if (mainChar == Define.MainCharacter.DominickWilliam)
                 return "ドミニク";
             else
                 return "レオン";
         }
         else
         {
-            if (mainChar == Define.MainCharacter.Bright)
+            if (mainChar == Define.MainCharacter.BrightNoa)
                 return "브라이트";
-            else if (mainChar == Define.MainCharacter.Rhys)
+            else if (mainChar == Define.MainCharacter.RhysJeon)
                 return "리스";
-            else if (mainChar == Define.MainCharacter.Dominick)
+            else if (mainChar == Define.MainCharacter.DominickWilliam)
                 return "도미닉";
             else
                 return "레온";

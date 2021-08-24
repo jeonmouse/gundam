@@ -19,6 +19,8 @@ public class DataManager
     public void Init()
     {
         Environment = LoadJson<EnvironmentData>("Environment");
+        if (Environment == null)
+            Environment = new EnvironmentData { Language = Define.Language.English };
         Common = new CommonData();
     }
 

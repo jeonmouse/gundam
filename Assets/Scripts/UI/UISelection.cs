@@ -73,7 +73,7 @@ public class UISelection : UIBase
 
     private Image fadeImage;
     private bool fadeOut = false;
-    private Define.MainCharacter mainChar = Define.MainCharacter.Bright;
+    private Define.MainCharacter mainChar = Define.MainCharacter.BrightNoa;
 
     void Start()
     {
@@ -193,28 +193,28 @@ public class UISelection : UIBase
     private void OnClickBright(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
-        mainChar = Define.MainCharacter.Bright;
+        mainChar = Define.MainCharacter.BrightNoa;
         SetMainCharacter("Bright");
     }
 
     private void OnClickRhys(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
-        mainChar = Define.MainCharacter.Rhys;
+        mainChar = Define.MainCharacter.RhysJeon;
         SetMainCharacter("Rhys");
     }
 
     private void OnClickDominick(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
-        mainChar = Define.MainCharacter.Dominick;
+        mainChar = Define.MainCharacter.DominickWilliam;
         SetMainCharacter("Dominick");
     }
 
     private void OnClickLeon(PointerEventData data)
     {
         GameManager.Sound.Play("Effect/Select");
-        mainChar = Define.MainCharacter.Leon;
+        mainChar = Define.MainCharacter.LeonMarcenas;
         SetMainCharacter("Leon");
     }
 
@@ -230,6 +230,12 @@ public class UISelection : UIBase
         GameManager.Sound.Play("Effect/Select");
         next = NextScene.Dialogue;
         GameManager.Data.Common.MainCharacter = mainChar;
+
+        if (mainChar == Define.MainCharacter.BrightNoa || mainChar == Define.MainCharacter.RhysJeon)
+            GameManager.Data.Common.Dialogue = Define.Dialogue.TemRayRoom;
+        else
+            GameManager.Data.Common.Dialogue = Define.Dialogue.GundamFactory;
+
         StartCoroutine(FadeOutCoroutine());
     }
 

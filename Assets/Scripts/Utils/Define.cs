@@ -13,10 +13,10 @@ public class Define
 
     public enum MainCharacter
     {
-        Bright,
-        Rhys,
-        Dominick,
-        Leon
+        BrightNoa,
+        RhysJeon,
+        DominickWilliam,
+        LeonMarcenas
     }
 
     public enum MouseEvent
@@ -61,6 +61,12 @@ public class Define
         RearAdmiral,
         ViceAdmiral,
         Admiral
+    }
+
+    public enum Dialogue
+    {
+        TemRayRoom = 0,
+        GundamFactory
     }
 
     public enum DialogueEvent

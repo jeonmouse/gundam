@@ -60,6 +60,11 @@
             "Number": 11,
             "Speaker": "템",
             "Content": "끔찍하군"
+        },
+        {
+            "Number": 1000,
+            "Speaker": "<MainCharacter>",
+            "Content": "페럴 중위님 건담 1호기 점검 완료 하였습니다"
         }
     ]
 }

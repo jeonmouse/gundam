@@ -28,6 +28,7 @@ public class UIDialogue : UIBase
 
     private enum RawImages
     {
+        BackgroundImage,
         LeftImage,
         RightImage
     }
@@ -62,14 +63,7 @@ public class UIDialogue : UIBase
         mainChar = Util.GetMainCharacterName(GameManager.Data.Environment.Language,
             GameManager.Data.Common.MainCharacter);
 
-        if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Bright)
-            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/BrightNoa");
-        else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Rhys)
-            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/RhysJeon");
-        else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Dominick)
-            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/DominickWilliam");
-        else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Leon)
-            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/LeonMarcenas");
+        SetDialogueScene();
 
         if (GameManager.Data.Environment.Language == Define.Language.Japanese) SetJapaneseFont();
 
@@ -83,6 +77,25 @@ public class UIDialogue : UIBase
 
         GetGameObject((int)GameObjects.SelectPanel2).SetActive(false);
         SetScript();
+    }
+
+    private void SetDialogueScene()
+    {
+        switch (GameManager.Data.Common.Dialogue)
+        {
+            case Define.Dialogue.TemRayRoom:
+                GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/TemRayRoom");
+                GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
+                GetRawImage((int)RawImages.RightImage).texture
+                    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                break;
+            case Define.Dialogue.GundamFactory:
+                GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/GundamFactory");
+                GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
+                GetRawImage((int)RawImages.RightImage).texture
+                    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                break;
+        }
     }
 
     private void OnHover(PointerEventData data)
@@ -172,13 +185,13 @@ public class UIDialogue : UIBase
             if (content.Contains("/"))
             {
                 string[] strArray = content.Split('/');
-                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Bright)
+                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.BrightNoa)
                     content = strArray[0];
-                else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Rhys)
+                else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.RhysJeon)
                     content = strArray[1];
-                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Dominick)
+                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.DominickWilliam)
                     content = strArray[2];
-                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.Leon)
+                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.LeonMarcenas)
                     content = strArray[3];
             }
 
