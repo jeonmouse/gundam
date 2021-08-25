@@ -66,11 +66,17 @@ public class Define
     public enum Dialogue
     {
         TemRayRoom = 0,
-        GundamFactory
+        GundamFactory = 1000
     }
 
     public enum DialogueEvent
     {
         AskAmuroName = 7
+    }
+
+    public enum DialoguePosition
+    {
+        Left = 0,
+        Right = 1
     }
 }

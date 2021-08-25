@@ -88,12 +88,14 @@ public class UIDialogue : UIBase
                 GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
                 GetRawImage((int)RawImages.RightImage).texture
                     = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                scriptNum = (int)Define.Dialogue.TemRayRoom;
                 break;
             case Define.Dialogue.GundamFactory:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/GundamFactory");
                 GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
                 GetRawImage((int)RawImages.RightImage).texture
                     = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                scriptNum = (int)Define.Dialogue.GundamFactory;
                 break;
         }
     }
@@ -156,8 +158,6 @@ public class UIDialogue : UIBase
 
     private void SetScript()
     {
-        if (scriptNum > GameManager.Data.Scripts.Count - 1) return;
-
         Script script = GameManager.Data.Scripts[scriptNum];
         string speaker = script.Speaker;
 

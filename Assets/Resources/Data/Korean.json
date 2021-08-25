@@ -3,68 +3,93 @@
     "Scripts": [
         {
             "Number": 0,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "레이 대위님, 사이드 7에 입항했습니다. 즉시 브릿지로 와 주십시오"
         },
         {
             "Number": 1,
+            "Position": 0,
             "Speaker": "템",
             "Content": "음. 알았네. <MainCharacter> 군이라고 했지?"
         },
         {
             "Number": 2,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "예"
         },
         {
             "Number": 3,
+            "Position": 0,
             "Speaker": "템",
             "Content": "입대한 지 얼마나 됐나?"
         },
         {
             "Number": 4,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "6개월입니다"
         },
         {
             "Number": 5,
+            "Position": 0,
             "Speaker": "템",
             "Content": "건담이 양산되면 자네같은 젊은 친구들이 안 싸워도 전쟁은 끝날 걸세"
         },
         {
             "Number": 6,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "저 사진은..."
         },
         {
             "Number": 7,
+            "Position": 1,
             "Speaker": "Select2",
             "Content": "아드님이십니까?/아드님 이군요. 이름은 어떻게 되나요?"
         },
         {
             "Number": 8,
+            "Position": 0,
             "Speaker": "템",
             "Content": "그래, 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
         },
         {
             "Number": 9,
+            "Position": 0,
             "Speaker": "템",
             "Content": "아, 아무로라네. 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
         },
         {
             "Number": 10,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "네, 그렇다고 합니다"
         },
         {
             "Number": 11,
+            "Position": 1,
             "Speaker": "템",
             "Content": "끔찍하군"
         },
         {
             "Number": 1000,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
-            "Content": "페럴 중위님 건담 1호기 점검 완료 하였습니다"
+            "Content": "페랠 중위님 건담 1호기 점검 완료 하였습니다"
+        },
+        {
+            "Number": 1001,
+            "Position": 0,
+            "Speaker": "페랠",
+            "Content": "수고했어, 이제 화이트베이스로 돌아가자"
+        },
+        {
+            "Number": 1002,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "저... 페렐 중위님"
         }
     ]
 }

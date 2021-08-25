@@ -21,6 +21,7 @@ public class ScriptData : ILoader<int, Script>
 public class Script
 {
     public int Number;
+    public int Position;
     public string Speaker;
     public string Content;
 }
