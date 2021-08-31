@@ -74,22 +74,82 @@
             "Content": "끔찍하군"
         },
         {
+            "Number": 12,
+            "Position": -1,
+            "Speaker": "-",
+            "Contetn": "-"
+        },
+        {
             "Number": 1000,
             "Position": 1,
             "Speaker": "<MainCharacter>",
-            "Content": "페랠 중위님 건담 1호기 점검 완료 하였습니다"
+            "Content": "파렐 중위님 건담 1호기 점검 완료 하였습니다"
         },
         {
             "Number": 1001,
             "Position": 0,
-            "Speaker": "페랠",
+            "Speaker": "파렐",
             "Content": "수고했어, 이제 화이트베이스로 돌아가자"
         },
         {
             "Number": 1002,
             "Position": 1,
             "Speaker": "<MainCharacter>",
-            "Content": "저... 페렐 중위님"
+            "Content": "저... 파렐 중위님"
+        },
+        {
+            "Number": 1003,
+            "Position": 0,
+            "Speaker": "파렐",
+            "Content": "왜, 무슨일 있어?"
+        },
+        {
+            "Number": 1004,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "건담을 화이트베이스로 탑재하는 동안 제가 타고 있어도 될가요?"
+        },
+        {
+            "Number": 1005,
+            "Position": 0,
+            "Speaker": "파렐",
+            "Content": "무슨 소리야 그게?"
+        },
+        {
+            "Number": 1006,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "저는 후보 파일럿이라 탑승할 기회가 많이 없을 것 같아 지금이라도 타보고 싶습니다!"
+        },
+        {
+            "Number": 1007,
+            "Position": 0,
+            "Speaker": "파렐",
+            "Content": "누워서 타고 있으면 어지러울텐데?"
+        },
+        {
+            "Number": 1008,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "괜찮습니다. 걱정마십쇼"
+        },
+        {
+            "Number": 1009,
+            "Position": 0,
+            "Speaker": "파렐",
+            "Content": "그래 알겠다. 화이트베이스에서 만나자"
+        },
+        {
+            "Number": 1010,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "감사합니다!"
+        },
+        {
+            "Number": 1011,
+            "Position": -1,
+            "Speaker": "-",
+            "Content": "-"
         }
     ]
 }

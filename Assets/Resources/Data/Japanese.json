@@ -3,63 +3,153 @@
     "Scripts": [
         {
             "Number": 0,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "伝令。レイ大尉、サイド７へ入港いたしました。至急、ブリッジへおいでください"
         },
         {
             "Number": 1,
+            "Position": 0,
             "Speaker": "テム",
             "Content": "ん、了解した, <MainCharacter>君といったね?"
         },
         {
             "Number": 2,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "はい"
         },
         {
             "Number": 3,
+            "Position": 0,
             "Speaker": "テム",
             "Content": "何ヶ月になるね？軍に入って?"
         },
         {
             "Number": 4,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "6ヶ月であります/6ヶ月であります/3年であります/2年であります"
         },
         {
             "Number": 5,
+            "Position": 0,
             "Speaker": "テム",
             "Content": "ガンダムが量産されるようになれば、君のような若者が実戦に出なくとも戦争は終わろう"
         },
         {
             "Number": 6,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "あの写真は···"
         },
         {
             "Number": 7,
+            "Position": 1,
             "Speaker": "Select2",
             "Content": "お子様でらっしゃいますか？/息子さんですね。 お名前は何ですか?"
         },
         {
             "Number": 8,
+            "Position": 0,
             "Speaker": "テム",
             "Content": "ああ。こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
         },
         {
             "Number": 9,
+            "Position": 0,
             "Speaker": "テム",
             "Content": "アムロです。 こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
         },
         {
             "Number": 10,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "はい、事実だそうであります"
         },
         {
             "Number": 11,
+            "Position": 0,
             "Speaker": "テム",
             "Content": "嫌だねえ"
+        },
+        {
+            "Number": 12,
+            "Position": -1,
+            "Speaker": "-",
+            "Contetn": "-"
+        },
+        {
+            "Number": 1000,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "ファレル中尉のガンダム1号機、点検完了しました"
+        },
+        {
+            "Number": 1001,
+            "Position": 0,
+            "Speaker": "ファレル",
+            "Content": "お疲れさま、もうホワイトベースに戻ろう"
+        },
+        {
+            "Number": 1002,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "あの…ファレル中尉様"
+        },
+        {
+            "Number": 1003,
+            "Position": 0,
+            "Speaker": "ファレル",
+            "Content": "何、何かあったの？"
+        },
+        {
+            "Number": 1004,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "ガンダムをホワイトベースで搭載する間、私が乗っていてもいいですか"
+        },
+        {
+            "Number": 1005,
+            "Position": 0,
+            "Speaker": "ファレル",
+            "Content": "何言ってるの？"
+        },
+        {
+            "Number": 1006,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "私は候補パイロットなので搭乗する機会があまりなさそうなので今からでも乗ってみたいです！"
+        },
+        {
+            "Number": 1007,
+            "Position": 0,
+            "Speaker": "ファレル",
+            "Content": "コックピットに横になって乗っていたらくらくらするんじゃない？"
+        },
+        {
+            "Number": 1008,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "大丈夫です。心配しないでください"
+        },
+        {
+            "Number": 1009,
+            "Position": 0,
+            "Speaker": "ファレル",
+            "Content": "そうわかった。ホワイトベースで会おうね"
+        },
+        {
+            "Number": 1010,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "ありがとうございました！"
+        },
+        {
+            "Number": 1011,
+            "Position": -1,
+            "Speaker": "-",
+            "Content": "-"
         }
     ]
 }

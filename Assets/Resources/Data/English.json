@@ -3,63 +3,153 @@
     "Scripts": [
         {
             "Number": 0,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "Excuse me, Lieutenant Ray, We're docking at Side 7 now. Please report to the bridge at once."
         },
         {
             "Number": 1,
+            "Position": 0,
             "Speaker": "Tem",
             "Content": "Very well. Your name is <MainCharacter>, isn't it?"
         },
         {
             "Number": 2,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "Yes, Sir"
         },
         {
             "Number": 3,
+            "Position": 0,
             "Speaker": "Tem",
             "Content": "How long have you been in the military?"
         },
         {
             "Number": 4,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "6 months, sir/6 months, sir/3 years, sir/2 years, sir"
         },
         {
             "Number": 5,
+            "Position": 0,
             "Speaker": "Tem",
             "Content": "Once we mass-produce the Gundam, we'll be able to end the war without sending young men like you into battle."
         },
         {
             "Number": 6,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "That picture is..."
         },
         {
             "Number": 7,
+            "Position": 1,
             "Speaker": "Select2",
             "Content": "Your son, sir?/Maybe your son. What's his name?"
         },
         {
             "Number": 8,
+            "Position": 0,
             "Speaker": "Tem",
             "Content": "Yes. I hear there are boys his age fighting as guerrillas. Is that true?"
         },
         {
             "Number": 9,
             "Speaker": "Tem",
+            "Position": 0,
             "Content": "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
         },
         {
             "Number": 10,
+            "Position": 1,
             "Speaker": "<MainCharacter>",
             "Content": "Yes, I'm told that it happens."
         },
         {
             "Number": 11,
+            "Position": 0,
             "Speaker": "Tem",
             "Content": "How terrible."
+        },
+        {
+            "Number": 12,
+            "Position": -1,
+            "Speaker": "-",
+            "Contetn": "-"
+        },
+        {
+            "Number": 1000,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "Lieutenant Farrell, we've completed the inspection of Gundam 1"
+        },
+        {
+            "Number": 1001,
+            "Position": 0,
+            "Speaker": "Farrell",
+            "Content": "Thank you. Let's go back to Whitebase"
+        },
+        {
+            "Number": 1002,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "... Lieutenant Farrell"
+        },
+        {
+            "Number": 1003,
+            "Position": 0,
+            "Speaker": "Farrell",
+            "Content": "Why, what's wrong?"
+        },
+        {
+            "Number": 1004,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "Can I stay on board while Gundam is loaded on the white base?"
+        },
+        {
+            "Number": 1005,
+            "Position": 0,
+            "Speaker": "Farrell",
+            "Content": "What does that mean?"
+        },
+        {
+            "Number": 1006,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "I'm a candidate pilot, so I don't think I'll have many chances to board, so I'd like to ride it now!"
+        },
+        {
+            "Number": 1007,
+            "Position": 0,
+            "Speaker": "Farrell",
+            "Content": "You'd be dizzy if you were lying in the cockpit."
+        },
+        {
+            "Number": 1008,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "It's all right. Don't worry"
+        },
+        {
+            "Number": 1009,
+            "Position": 0,
+            "Speaker": "Farrell",
+            "Content": "Okay, I'll meet you in Whitebase"
+        },
+        {
+            "Number": 1010,
+            "Position": 1,
+            "Speaker": "<MainCharacter>",
+            "Content": "Thank you!"
+        },
+        {
+            "Number": 1011,
+            "Position": -1,
+            "Speaker": "-",
+            "Content": "-"
         }
     ]
 }

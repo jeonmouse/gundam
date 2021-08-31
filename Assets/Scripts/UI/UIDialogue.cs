@@ -85,16 +85,16 @@ public class UIDialogue : UIBase
         {
             case Define.Dialogue.TemRayRoom:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/TemRayRoom");
-                GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
-                GetRawImage((int)RawImages.RightImage).texture
-                    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                //GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
+                //GetRawImage((int)RawImages.RightImage).texture
+                //    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
                 scriptNum = (int)Define.Dialogue.TemRayRoom;
                 break;
             case Define.Dialogue.GundamFactory:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/GundamFactory");
-                GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
-                GetRawImage((int)RawImages.RightImage).texture
-                    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                //GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
+                //GetRawImage((int)RawImages.RightImage).texture
+                //    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
                 scriptNum = (int)Define.Dialogue.GundamFactory;
                 break;
         }
@@ -159,6 +159,7 @@ public class UIDialogue : UIBase
     private void SetScript()
     {
         Script script = GameManager.Data.Scripts[scriptNum];
+        int position = script.Position;
         string speaker = script.Speaker;
 
         if (speaker.Contains("Select"))
@@ -182,6 +183,7 @@ public class UIDialogue : UIBase
             speaker = speaker.Replace("<MainCharacter>", mainChar);
             string content = script.Content.Replace("<MainCharacter>", mainChar);
 
+            /*
             if (content.Contains("/"))
             {
                 string[] strArray = content.Split('/');
@@ -194,6 +196,7 @@ public class UIDialogue : UIBase
                 if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.LeonMarcenas)
                     content = strArray[3];
             }
+            */
 
             GetText((int)Texts.SpeakerText).text = speaker;
             GetText((int)Texts.ContentText).text = content;
