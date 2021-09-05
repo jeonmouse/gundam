@@ -7,5 +7,5 @@ using UnityEngine;
 public class EnvironmentData
 {
     public Define.Language Language;
-    public Define.MainCharacter MainCharacter;
+    public Define.Character MainCharacter;
 }

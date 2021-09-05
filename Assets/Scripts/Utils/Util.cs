@@ -49,40 +49,62 @@ public class Util
         return null;
     }
 
-    public static string GetMainCharacterName(Define.Language language, Define.MainCharacter mainChar)
+    public static string GetMainCharacterName(Define.Language language, Define.Character mainChar)
     {
         if (language == Define.Language.English)
         {
-            if (mainChar == Define.MainCharacter.BrightNoa)
+            if (mainChar == Define.Character.BrightNoa)
                 return "Bright";
-            else if (mainChar == Define.MainCharacter.RhysJeon)
+            else if (mainChar == Define.Character.RhysJeon)
                 return "Rhys";
-            else if (mainChar == Define.MainCharacter.DominickWilliam)
+            else if (mainChar == Define.Character.DominickWilliam)
                 return "Dominick";
             else
                 return "Leon";
         }
         else if (language == Define.Language.Japanese)
         {
-            if (mainChar == Define.MainCharacter.BrightNoa)
+            if (mainChar == Define.Character.BrightNoa)
                 return "ブライト";
-            else if (mainChar == Define.MainCharacter.RhysJeon)
+            else if (mainChar == Define.Character.RhysJeon)
                 return "リース";
-            else if (mainChar == Define.MainCharacter.DominickWilliam)
+            else if (mainChar == Define.Character.DominickWilliam)
                 return "ドミニク";
             else
                 return "レオン";
         }
         else
         {
-            if (mainChar == Define.MainCharacter.BrightNoa)
+            if (mainChar == Define.Character.BrightNoa)
                 return "브라이트";
-            else if (mainChar == Define.MainCharacter.RhysJeon)
+            else if (mainChar == Define.Character.RhysJeon)
                 return "리스";
-            else if (mainChar == Define.MainCharacter.DominickWilliam)
+            else if (mainChar == Define.Character.DominickWilliam)
                 return "도미닉";
             else
                 return "레온";
+        }
+    }
+
+    public static Define.Character DefineCharacter(string name)
+    {
+        switch (name)
+        {
+            case "<MainCharacter>":
+            case "Select2":
+            case "Select3":
+                return GameManager.Data.Common.MainCharacter;
+            case "템":
+            case "Tem":
+            case "テム":
+                return Define.Character.TemRay;
+            case "파렐":
+            case "Farrell":
+            case "ファレル":
+                return Define.Character.FarrellIha;
+            default:
+                return Define.Character.Nobody;
+
         }
     }
 }

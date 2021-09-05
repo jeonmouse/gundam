@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIDialogue : UIBase
@@ -85,17 +86,15 @@ public class UIDialogue : UIBase
         {
             case Define.Dialogue.TemRayRoom:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/TemRayRoom");
-                //GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
-                //GetRawImage((int)RawImages.RightImage).texture
-                //    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
                 scriptNum = (int)Define.Dialogue.TemRayRoom;
+                GameManager.Data.Common.Battle = Define.Battle.GundamRising;
                 break;
             case Define.Dialogue.GundamFactory:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/GundamFactory");
-                //GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
-                //GetRawImage((int)RawImages.RightImage).texture
-                //    = GameManager.Resource.Load<Texture2D>("Characters/" + GameManager.Data.Common.MainCharacter.ToString());
+                GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
                 scriptNum = (int)Define.Dialogue.GundamFactory;
+                GameManager.Data.Common.Battle = Define.Battle.GundamRising;
                 break;
         }
     }
@@ -161,6 +160,15 @@ public class UIDialogue : UIBase
         Script script = GameManager.Data.Scripts[scriptNum];
         int position = script.Position;
         string speaker = script.Speaker;
+        if (position == 0)
+            GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
+        else if (position == 1)
+            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
+        else
+        {
+            StartCoroutine(FadeOutCoroutine());
+            return;
+        }
 
         if (speaker.Contains("Select"))
         {
@@ -205,6 +213,15 @@ public class UIDialogue : UIBase
                 scriptNum = joinId;
             else
                 scriptNum++;
+        }
+    }
+
+    void Update()
+    {
+        if (fadeOut)
+        {
+            GameManager.Clear();
+            SceneManager.LoadScene("Battle");
         }
     }
 

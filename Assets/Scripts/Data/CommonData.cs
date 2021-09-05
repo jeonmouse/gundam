@@ -6,7 +6,8 @@ using UnityEngine;
 [Serializable]
 public class CommonData
 {
-    public Define.MainCharacter MainCharacter;
+    public Define.Character MainCharacter;
     public Define.Dialogue Dialogue;
+    public Define.Battle Battle;
     public bool AskAmuroName;
 }

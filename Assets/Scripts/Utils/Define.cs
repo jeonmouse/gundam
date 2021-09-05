@@ -11,12 +11,15 @@ public class Define
         Korean
     }
 
-    public enum MainCharacter
+    public enum Character
     {
         BrightNoa,
         RhysJeon,
         DominickWilliam,
-        LeonMarcenas
+        LeonMarcenas,
+        TemRay,
+        FarrellIha,
+        Nobody
     }
 
     public enum MouseEvent
@@ -78,5 +81,10 @@ public class Define
     {
         Left = 0,
         Right = 1
+    }
+
+    public enum Battle
+    {
+        GundamRising
     }
 }
