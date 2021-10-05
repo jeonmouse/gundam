@@ -28,7 +28,8 @@ public class Define
         Down,
         Up,
         Hold,
-        Click
+        Click,
+        Hover
     }
 
     public enum UIEvent
