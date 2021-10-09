@@ -13,13 +13,10 @@ public class Define
 
     public enum Character
     {
-        BrightNoa,
-        RhysJeon,
-        DominickWilliam,
-        LeonMarcenas,
-        TemRay,
-        FarrellIha,
-        Nobody
+        Nobody = 0,
+        BrightNoa = 1, RhysJeon = 2, DominickWilliam = 3, LeonMarcenas = 4,
+        Amuro = 5, 
+        TemRay = 3001, FarrellIha = 3002
     }
 
     public enum MouseEvent

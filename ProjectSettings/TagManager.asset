@@ -50,6 +50,9 @@ TagManager:
   - name: Unit
     uniqueID: 4211613541
     locked: 0
+  - name: Range
+    uniqueID: 1002154813
+    locked: 0
   - name: Cursor
     uniqueID: 3044555509
     locked: 0

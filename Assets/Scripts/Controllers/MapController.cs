@@ -5,7 +5,21 @@ using UnityEngine;
 public class MapController : MonoBehaviour
 {
     [SerializeField] private GameObject cursor;
+    [SerializeField] private GameObject move;
     [SerializeField] private GameObject testUnit;  // For TEST
+
+    private int[,] msMap =
+    {
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    };
+
+    private int[] ourShipMap = { 0, 0, 0, 0, 0, 0 };
+    private int[] enermyShipMap = { 0, 0, 0, 0, 0, 0 };
 
     private const float mapLeft = -10.0f;
     private const float mapRight = 2.0f;
@@ -22,28 +36,47 @@ public class MapController : MonoBehaviour
 
     }
 
+    private void SetBattleScene()
+    {
+        switch (GameManager.Data.Common.Battle)
+        {
+            case Define.Battle.GundamRising:
+                msMap[7, 1] = (int)Define.Character.Amuro;
+                break;
+        }
+    }
+
     private void OnMouseEvent(Define.MouseEvent evt)
     {
-        Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         switch (evt)
         {
             case Define.MouseEvent.Hover:
-                DisplayCursor(position);
+                DisplayCursor();
                 break;
             case Define.MouseEvent.Click:
-                Ray2D ray = new Ray2D(position, Vector2.zero);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-                Debug.Log(hit.collider.name);
+                ClickMap();
                 break;
             case Define.MouseEvent.Hold:
                 break;
         }
     }
 
-    private void DisplayCursor(Vector2 position)
+    private void ClickMap()
     {
-        if (GetPointOnMap(ref position))
+        Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Ray2D ray = new Ray2D(position, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        if (hit.collider != null)
+        {
+
+        }
+    }
+
+    private void DisplayCursor()
+    {
+        Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (GetPivoitPoint(ref position))
         {
             if (cursor.activeSelf == false)
                 cursor.SetActive(true);
@@ -57,7 +90,7 @@ public class MapController : MonoBehaviour
         }
     }
 
-    private bool GetPointOnMap(ref Vector2 position)
+    private bool GetPivoitPoint(ref Vector2 position)
     {
         if (position.x < mapLeft || position.x > mapRight || position.y > mapTop || position.y < mapBottom)
             return false;
