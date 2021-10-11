@@ -8,19 +8,6 @@ public class MapController : MonoBehaviour
     [SerializeField] private GameObject move;
     [SerializeField] private GameObject testUnit;  // For TEST
 
-    private int[,] msMap =
-    {
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-    };
-
-    private int[] ourShipMap = { 0, 0, 0, 0, 0, 0 };
-    private int[] enermyShipMap = { 0, 0, 0, 0, 0, 0 };
-
     private const float mapLeft = -10.0f;
     private const float mapRight = 2.0f;
     private const float mapTop = 5.625f;
@@ -41,7 +28,7 @@ public class MapController : MonoBehaviour
         switch (GameManager.Data.Common.Battle)
         {
             case Define.Battle.GundamRising:
-                msMap[7, 1] = (int)Define.Character.Amuro;
+                //msMap[7, 1] = (int)Define.Character.Amuro;
                 break;
         }
     }
@@ -64,11 +51,11 @@ public class MapController : MonoBehaviour
     private void ClickMap()
     {
         Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Ray2D ray = new Ray2D(position, Vector2.zero);
+        Ray2D ray = new(position, Vector2.zero);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
         if (hit.collider != null)
         {
-
+            
         }
     }
 
@@ -76,7 +63,7 @@ public class MapController : MonoBehaviour
     {
         Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (GetPivoitPoint(ref position))
+        if (GetPivotPosition(ref position))
         {
             if (cursor.activeSelf == false)
                 cursor.SetActive(true);
@@ -90,7 +77,7 @@ public class MapController : MonoBehaviour
         }
     }
 
-    private bool GetPivoitPoint(ref Vector2 position)
+    private bool GetPivotPosition(ref Vector2 position)
     {
         if (position.x < mapLeft || position.x > mapRight || position.y > mapTop || position.y < mapBottom)
             return false;

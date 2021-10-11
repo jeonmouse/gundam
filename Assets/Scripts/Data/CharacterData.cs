@@ -6,11 +6,11 @@ using UnityEngine;
 [Serializable]
 public class CharacterData : ILoader<string, Character>
 {
-    public List<Character> Characters = new List<Character>();
+    public List<Character> Characters = new();
 
     public Dictionary<string, Character> MakeDic()
     {
-        Dictionary<string, Character> dic = new Dictionary<string, Character>();
+        Dictionary<string, Character> dic = new();
         foreach (Character character in Characters)
             dic.Add(character.Name, character);
         return dic;

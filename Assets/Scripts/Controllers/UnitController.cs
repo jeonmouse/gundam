@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
+    public int X { get; set; }
+    public int Y { get; set; }
+
+
     private void Start()
     {
         GameManager.Input.MouseAction -= OnMouseEvent;
