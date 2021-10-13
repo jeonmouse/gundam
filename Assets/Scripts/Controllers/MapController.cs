@@ -50,7 +50,8 @@ public class MapController : MonoBehaviour
                 amuroGundam.transform.position = map[7, 3];
                 inaccessible = new List<Vector2>() {
                     map[10, 2], map[10, 3], map[10, 4], map[10, 5], map[10, 6], map[10, 7],
-                    map[11, 2], map[11, 3], map[11, 4], map[11, 5], map[11, 6], map[11, 7]
+                    map[11, 2], map[11, 3], map[11, 4], map[11, 5], map[11, 6], map[11, 7],
+                    map[2, 4], map[3, 4], map[2, 5], map[3, 5], map[2, 2], map[2, 3]
                 };
                 break;
         }
@@ -94,6 +95,13 @@ public class MapController : MonoBehaviour
 
     private void DisplayMoveRange(Vector2 position, int speed)
     {
+        bool[,] block = new bool[speed * 2 + 1, speed * 2 + 1];
+        bool[,] closed = new bool[speed * 2 + 1, speed * 2 + 1];
+        int[,] open = new int[speed * 2 + 1, speed * 2 + 1];
+        for (int i = -speed; i < speed + 1; i++)
+            for (int j = -speed; j < speed + 1; j++)
+                open[i, j] = int.MaxValue;
+
         for (int i = -speed; i <= speed; i++)
         {
             for (int j = -speed; j <= speed; j++)
@@ -102,7 +110,10 @@ public class MapController : MonoBehaviour
                 {
                     Vector2 pos = new(position.x + i, position.y + j);
                     if (pos.y > mapTop - 2.0f || pos.y <= mapBottom + 2.0f)
+                    {
+                        block[i + speed, j + speed] = true;
                         continue;
+                    }
 
                     if (inaccessible.Contains(pos))
                         continue;
