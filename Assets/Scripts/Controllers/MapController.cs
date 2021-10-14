@@ -97,9 +97,27 @@ public class MapController : MonoBehaviour
         return hit.collider;
     }
 
+    struct Node : IComparable<Node>
+    {
+        public int F;
+        public int G;
+        public int X;
+        public int Y;
+
+        public int CompareTo(Node other)
+        {
+            if (F == other.F)
+                return 0;
+            return F < other.F ? 1 : -1;
+        }
+    }
+
     private void DisplayMoveRange(Vector2 position, int speed)
     {
-        bool[,] block = new bool[speed * 2 + 1, speed * 2 + 1];
+        int boardSize = speed * 2 + 1;
+        bool[,] block = new bool[boardSize, boardSize];
+        List<Vector2> accessible = new List<Vector2>();
+        Vector2 startPoint = new Vector2(speed + 1, speed + 1); 
 
         for (int i = -speed; i <= speed; i++)
         {
@@ -115,23 +133,45 @@ public class MapController : MonoBehaviour
                     }
 
                     if (inaccessible.Contains(pos))
+                    {
+                        block[i + speed, j + speed] = true;
                         continue;
+                    }
 
                     Collider2D collider = GetColliderFromPosition(pos);
-                    if (collider != null)
+                    if (collider != null && collider.gameObject.GetComponent<UnitController>().Pilot.Affiliation != Define.Affiliation.EFSF)
+                    {
+                        block[i + speed, j + speed] = true;
                         continue;
+                    }
 
+                    block[i + speed, j + speed] = false;
+                    accessible.Add(new Vector2(i + speed, j + speed));
+
+                    //------
                     GameObject move = Instantiate(this.move, transform, false);
                     move.transform.position = pos;
+                    //------
                 }
             }
         }
 
-        //bool[,] closed = new bool[speed * 2 + 1, speed * 2 + 1];
-        //int[,] open = new int[speed * 2 + 1, speed * 2 + 1];
-        //for (int i = -speed; i < speed + 1; i++)
-        //    for (int j = -speed; j < speed + 1; j++)
-        //        open[i, j] = int.MaxValue;
+        bool[,] closed = new bool[boardSize, boardSize];
+        int[,] open = new int[boardSize, boardSize];
+        for (int i = 0; i < boardSize; i++)
+            for (int j = 0; j < boardSize; j++)
+                open[i, j] = int.MaxValue;
+
+        Vector2[,] parent = new Vector2[boardSize, boardSize];
+
+        Queue<Node> nodes = new Queue<Node>();
+
+        foreach (Vector2 endPoint in accessible)
+        {
+            
+        }
+
+
     }
 
     private void DisplayCursor()
