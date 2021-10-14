@@ -10,4 +10,9 @@ public class UnitController : MonoBehaviour
     {
         Debug.Log("unit");
     }
+
+    public void InitUnit()
+    {
+    
+    }
 }

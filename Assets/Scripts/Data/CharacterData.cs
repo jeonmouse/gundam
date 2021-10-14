@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class CharacterData : ILoader<string, Character>
+public class CharacterData : ILoader<Define.Character, Character>
 {
     public List<Character> Characters = new();
 
-    public Dictionary<string, Character> MakeDic()
+    public Dictionary<Define.Character, Character> MakeDic()
     {
-        Dictionary<string, Character> dic = new();
+        Dictionary<Define.Character, Character> dic = new();
         foreach (Character character in Characters)
-            dic.Add(character.Name, character);
+            dic.Add(character.ID, character);
         return dic;
     }
 }
@@ -20,9 +20,12 @@ public class CharacterData : ILoader<string, Character>
 [Serializable]
 public class Character
 {
-    public string Name;
+    public Define.Character ID;
+    public Define.Affiliation Affiliation;
     public Define.Rank Rank;
-    public int Level;
+    public int PilotLevel;
+    public int PilotExperience;
+    public int CaptainLevel;
+    public int CaptainExperience;
     public int ShotDownNumber;
-    public int Exp;
 }

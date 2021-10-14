@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 70167278}
   - component: {fileID: 70167277}
   m_Layer: 5
-  m_Name: Reflexes
+  m_Name: Reflex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 118504479}
   - component: {fileID: 118504478}
   m_Layer: 5
-  m_Name: Manage
+  m_Name: Judgement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MAN: 20'
+  m_Text: 'JUD: 20'
 --- !u!222 &118504479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 245983751}
   - component: {fileID: 245983750}
   m_Layer: 5
-  m_Name: Manage
+  m_Name: Judgement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,7 +907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MAN: 17'
+  m_Text: 'JUD: 17'
 --- !u!222 &245983751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 259423043}
   - component: {fileID: 259423042}
   m_Layer: 5
-  m_Name: Supply
+  m_Name: Management
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -987,7 +987,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SUP: 16'
+  m_Text: 'MAN: 16'
 --- !u!222 &259423043
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 381640377}
   - component: {fileID: 381640376}
   m_Layer: 5
-  m_Name: Supply
+  m_Name: Management
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,7 +1380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SUP: 14'
+  m_Text: 'MAN: 14'
 --- !u!222 &381640377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1641,7 +1641,7 @@ GameObject:
   - component: {fileID: 553039000}
   - component: {fileID: 553038999}
   m_Layer: 5
-  m_Name: Manage
+  m_Name: Judgement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1700,7 +1700,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MAN: 13'
+  m_Text: 'JUD: 13'
 --- !u!222 &553039000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2467,7 +2467,7 @@ GameObject:
   - component: {fileID: 916887417}
   - component: {fileID: 916887416}
   m_Layer: 5
-  m_Name: Command
+  m_Name: Leadership
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2526,7 +2526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'COM: 18'
+  m_Text: 'LEA: 18'
 --- !u!222 &916887417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3020,7 +3020,7 @@ GameObject:
   - component: {fileID: 1092136967}
   - component: {fileID: 1092136966}
   m_Layer: 5
-  m_Name: Command
+  m_Name: Leadership
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3079,7 +3079,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'COM: 16'
+  m_Text: 'LEA: 16'
 --- !u!222 &1092136967
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3596,7 +3596,7 @@ GameObject:
   - component: {fileID: 1349404961}
   - component: {fileID: 1349404960}
   m_Layer: 5
-  m_Name: Reflexes
+  m_Name: Reflex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3781,7 +3781,7 @@ GameObject:
   - component: {fileID: 1379877005}
   - component: {fileID: 1379877004}
   m_Layer: 5
-  m_Name: Command
+  m_Name: Leadership
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3840,7 +3840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'COM: 18'
+  m_Text: 'LEA: 18'
 --- !u!222 &1379877005
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4241,7 +4241,7 @@ GameObject:
   - component: {fileID: 1506523059}
   - component: {fileID: 1506523058}
   m_Layer: 5
-  m_Name: Supply
+  m_Name: Management
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4300,7 +4300,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SUP: 18'
+  m_Text: 'MAN: 18'
 --- !u!222 &1506523059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4989,7 +4989,7 @@ GameObject:
   - component: {fileID: 1810785027}
   - component: {fileID: 1810785026}
   m_Layer: 5
-  m_Name: Manage
+  m_Name: Judgement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5048,7 +5048,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MAN: 18'
+  m_Text: 'JUD: 17'
 --- !u!222 &1810785027
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5149,7 +5149,7 @@ GameObject:
   - component: {fileID: 1854118479}
   - component: {fileID: 1854118478}
   m_Layer: 5
-  m_Name: Reflexes
+  m_Name: Reflex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5229,7 +5229,7 @@ GameObject:
   - component: {fileID: 1857046793}
   - component: {fileID: 1857046792}
   m_Layer: 5
-  m_Name: Command
+  m_Name: Leadership
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5288,7 +5288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'COM: 14'
+  m_Text: 'LEA: 14'
 --- !u!222 &1857046793
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5382,7 +5382,7 @@ GameObject:
   - component: {fileID: 1923162359}
   - component: {fileID: 1923162358}
   m_Layer: 5
-  m_Name: Reflexes
+  m_Name: Reflex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5695,7 +5695,7 @@ GameObject:
   - component: {fileID: 2016438502}
   - component: {fileID: 2016438501}
   m_Layer: 5
-  m_Name: Supply
+  m_Name: Management
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5754,7 +5754,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SUP: 14'
+  m_Text: 'MAN: 14'
 --- !u!222 &2016438502
 CanvasRenderer:
   m_ObjectHideFlags: 0

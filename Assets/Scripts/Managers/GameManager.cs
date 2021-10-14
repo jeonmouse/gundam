@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     SoundManager sound = new SoundManager();
     public static SoundManager Sound { get { return instance.sound; } }
 
+    StatusManager status = new StatusManager();
+    public static StatusManager Status { get { return instance.status; } }
+
     private void Awake()
     {
         Application.targetFrameRate = 30;

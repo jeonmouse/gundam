@@ -15,8 +15,43 @@ public class Define
     {
         Nobody = 0,
         BrightNoa = 1, RhysJeon = 2, DominickWilliam = 3, LeonMarcenas = 4,
-        Amuro = 5, 
+        AmuroRay = 5,
         TemRay = 3001, FarrellIha = 3002
+    }
+
+    public enum Mechanic
+    {
+        Gundam1,
+        Gundam2,
+        Zaku2
+    }
+
+    public enum Affiliation
+    {
+        EFSF,
+        Zeon
+    }
+
+    public enum Rank
+    {
+        SeamanRecruit,
+        SeamanApprentice,
+        Seaman,
+        PettyOfficer2ndClass,
+        WarrantOfficer,
+        PettyOfficer1stClass,
+        ChiefPettyOfficer,
+        SeniorChiefPettyOfficer,
+        Ensign,
+        LieutenantJuniorGrade,
+        Lieutenant,
+        LieutenantCommander,
+        Commander,
+        Captain,
+        RearAdmiralLower,
+        RearAdmiral,
+        ViceAdmiral,
+        Admiral
     }
 
     public enum MouseEvent
@@ -41,28 +76,7 @@ public class Define
         Effect,
         MaxCount
     }
-
-    public enum Rank
-    {
-        SeamanRecruit,
-        SeamanApprentice,
-        Seaman,
-        PettyOfficer2ndClass,
-        WarrantOfficer,
-        PettyOfficer1stClass,
-        ChiefPettyOfficer,
-        SeniorChiefPettyOfficer,
-        Ensign,
-        LieutenantJuniorGrade,
-        Lieutenant,
-        LieutenantCommander,
-        Commander,
-        Captain,
-        RearAdmiralLower,
-        RearAdmiral,
-        ViceAdmiral,
-        Admiral
-    }
+    
 
     public enum Dialogue
     {

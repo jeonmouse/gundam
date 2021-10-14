@@ -13,7 +13,7 @@ public class DataManager
 {
     public EnvironmentData Environment { get; set; }
     public CommonData Common { get; set; }
-    public Dictionary<string, Character> Characters { get; set; } = new Dictionary<string, Character>();
+    public Dictionary<Define.Character, Character> Characters { get; set; } = new Dictionary<Define.Character, Character>();
     public Dictionary<int, Script> Scripts { get; set; } = new Dictionary<int, Script>();
 
     public void Init()
@@ -33,7 +33,7 @@ public class DataManager
     public void Load(int index)
     {
         Common = LoadJson<CommonData>("Common");
-        Characters = LoadJson<CharacterData, string, Character>("Character").MakeDic();
+        Characters = LoadJson<CharacterData, Define.Character, Character>("Character").MakeDic();
     }
 
     public void SaveEnvironment()

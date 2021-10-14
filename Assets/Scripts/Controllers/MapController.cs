@@ -96,11 +96,6 @@ public class MapController : MonoBehaviour
     private void DisplayMoveRange(Vector2 position, int speed)
     {
         bool[,] block = new bool[speed * 2 + 1, speed * 2 + 1];
-        bool[,] closed = new bool[speed * 2 + 1, speed * 2 + 1];
-        int[,] open = new int[speed * 2 + 1, speed * 2 + 1];
-        for (int i = -speed; i < speed + 1; i++)
-            for (int j = -speed; j < speed + 1; j++)
-                open[i, j] = int.MaxValue;
 
         for (int i = -speed; i <= speed; i++)
         {
@@ -127,6 +122,12 @@ public class MapController : MonoBehaviour
                 }
             }
         }
+
+        bool[,] closed = new bool[speed * 2 + 1, speed * 2 + 1];
+        int[,] open = new int[speed * 2 + 1, speed * 2 + 1];
+        for (int i = -speed; i < speed + 1; i++)
+            for (int j = -speed; j < speed + 1; j++)
+                open[i, j] = int.MaxValue;
     }
 
     private void DisplayCursor()
