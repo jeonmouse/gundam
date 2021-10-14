@@ -45,14 +45,18 @@ public class MapController : MonoBehaviour
         switch (GameManager.Data.Common.Battle)
         {
             case Define.Battle.GundamRising:
-                GameObject amuroGundam = Instantiate(unit, transform, false);
-                amuroGundam.GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Icons/RX-78-2");
-                amuroGundam.transform.position = map[7, 3];
                 inaccessible = new List<Vector2>() {
                     map[10, 2], map[10, 3], map[10, 4], map[10, 5], map[10, 6], map[10, 7],
                     map[11, 2], map[11, 3], map[11, 4], map[11, 5], map[11, 6], map[11, 7],
                     map[2, 4], map[3, 4], map[2, 5], map[3, 5], map[2, 2], map[2, 3]
                 };
+
+                GameManager.Data.Characters.Add(Define.Character.AmuroRay, new Character(
+                    Define.Character.AmuroRay, Define.Affiliation.EFSF, Define.Rank.SeamanRecruit, 0, 0));
+
+                GameObject amuroGundam = Instantiate(unit, transform, false);
+                amuroGundam.GetComponent<UnitController>().InitUnit(Define.Character.AmuroRay, Define.Mechanic.Gundam2);
+                amuroGundam.transform.position = map[7, 3];
                 break;
         }
     }
@@ -123,11 +127,11 @@ public class MapController : MonoBehaviour
             }
         }
 
-        bool[,] closed = new bool[speed * 2 + 1, speed * 2 + 1];
-        int[,] open = new int[speed * 2 + 1, speed * 2 + 1];
-        for (int i = -speed; i < speed + 1; i++)
-            for (int j = -speed; j < speed + 1; j++)
-                open[i, j] = int.MaxValue;
+        //bool[,] closed = new bool[speed * 2 + 1, speed * 2 + 1];
+        //int[,] open = new int[speed * 2 + 1, speed * 2 + 1];
+        //for (int i = -speed; i < speed + 1; i++)
+        //    for (int j = -speed; j < speed + 1; j++)
+        //        open[i, j] = int.MaxValue;
     }
 
     private void DisplayCursor()

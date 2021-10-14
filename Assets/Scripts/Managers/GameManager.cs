@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
         instance.data.Init();
         instance.sound.Init();
+        instance.status.Init();
 
         instance.data.SetLanguage(Data.Environment.Language);
     }

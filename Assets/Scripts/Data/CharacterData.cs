@@ -15,6 +15,16 @@ public class CharacterData : ILoader<Define.Character, Character>
             dic.Add(character.ID, character);
         return dic;
     }
+
+    public void SaveToList(Dictionary<Define.Character, Character> dic)
+    {
+        Characters.Clear();
+
+        foreach (Character character in dic.Values)
+        {
+            Characters.Add(character);
+        }
+    }
 }
 
 [Serializable]
@@ -28,4 +38,17 @@ public class Character
     public int CaptainLevel;
     public int CaptainExperience;
     public int ShotDownNumber;
+
+    public Character(Define.Character character, Define.Affiliation affiliation, Define.Rank rank, 
+        int pilotLevel, int captainLevel)
+    {
+        ID = character;
+        Affiliation = affiliation;
+        Rank = rank;
+        PilotLevel = pilotLevel;
+        PilotExperience = 0;
+        CaptainLevel = captainLevel;
+        CaptainExperience = 0;
+        ShotDownNumber = 0;
+    }
 }

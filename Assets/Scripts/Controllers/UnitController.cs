@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    public int Speed { get; set; } = 4;
+    public Character Pilot;
+    public CharacterStatus PilotStatus;
+    public MechanicStatus MechanicStatus;
 
-    private void Start()
-    {
-        Debug.Log("unit");
-    }
+    public int Speed { get { return MechanicStatus.Speed; } }
 
-    public void InitUnit()
+    public void InitUnit(Define.Character pilot, Define.Mechanic mechanic)
     {
-    
+        Pilot = GameManager.Data.Characters[pilot];
+        PilotStatus = GameManager.Status.CharStatusDic[pilot];
+        MechanicStatus = GameManager.Status.MechaStatusDic[mechanic];
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Icons/" + mechanic.ToString());
     }
 }
