@@ -11,6 +11,8 @@ public class MapController : MonoBehaviour
 
     private Vector2[,] map;
     private List<Vector2> inaccessible;
+    private Dictionary<Vector2, Vector2Int[,]> paths;
+    private GameObject selectedUnit = null;
 
     private const float mapLeft = -10.0f;
     private const float mapRight = 2.0f;
@@ -21,7 +23,7 @@ public class MapController : MonoBehaviour
     {
         GameManager.Input.MouseAction -= OnMouseEvent;
         GameManager.Input.MouseAction += OnMouseEvent;
-
+        
         map = new Vector2[12, 10];
         float x = mapLeft;
         float y = mapBottom + 1.0f;
@@ -82,10 +84,16 @@ public class MapController : MonoBehaviour
         if (GetPivotPosition(ref position))
         {
             Collider2D collider = GetColliderFromPosition(position);
-            if (collider != null)
+            if (collider != null && selectedUnit == null)
             {
                 int speed = collider.GetComponent<UnitController>().Speed;
                 DisplayMoveRange(position, speed);
+                selectedUnit = collider.gameObject;
+            }
+            else if (collider == null && selectedUnit != null)
+            {
+                Vector2Int[,] parent = paths[position];
+                selectedUnit.GetComponent<UnitController>().Move(parent, position);
             }
         }
     }
@@ -116,8 +124,7 @@ public class MapController : MonoBehaviour
     {
         int boardSize = speed * 2 + 1;
         bool[,] block = new bool[boardSize, boardSize];
-        List<Vector2> accessible = new List<Vector2>();
-        Vector2 startPoint = new Vector2(speed + 1, speed + 1); 
+        List<Vector2Int> accessPoint = new();
 
         for (int i = -speed; i <= speed; i++)
         {
@@ -146,32 +153,95 @@ public class MapController : MonoBehaviour
                     }
 
                     block[i + speed, j + speed] = false;
-                    accessible.Add(new Vector2(i + speed, j + speed));
-
-                    //------
-                    GameObject move = Instantiate(this.move, transform, false);
-                    move.transform.position = pos;
-                    //------
+                    accessPoint.Add(new Vector2Int(i + speed, j + speed));                   
                 }
             }
         }
 
-        bool[,] closed = new bool[boardSize, boardSize];
-        int[,] open = new int[boardSize, boardSize];
-        for (int i = 0; i < boardSize; i++)
-            for (int j = 0; j < boardSize; j++)
-                open[i, j] = int.MaxValue;
+        paths = new Dictionary<Vector2, Vector2Int[,]>();
+        int[] deltaX = new int[] { 0, -1, 0, 1 };
+        int[] deltaY = new int[] { -1, 0, 1, 0 };
+        int cost = 1;
 
-        Vector2[,] parent = new Vector2[boardSize, boardSize];
+        Vector2Int startPoint = new(speed, speed);
 
-        Queue<Node> nodes = new Queue<Node>();
-
-        foreach (Vector2 endPoint in accessible)
+        foreach (Vector2Int endPoint in accessPoint)
         {
-            
+            bool[,] closed = new bool[boardSize, boardSize];
+            int[,] open = new int[boardSize, boardSize];
+            for (int i = 0; i < boardSize; i++)
+                for (int j = 0; j < boardSize; j++)
+                    open[i, j] = int.MaxValue;
+
+            Vector2Int[,] parent = new Vector2Int[boardSize, boardSize];
+            Queue<Node> nodes = new();
+
+            open[startPoint.x, startPoint.y] = Math.Abs(endPoint.x - startPoint.x) + Math.Abs(endPoint.y - startPoint.x);
+            nodes.Enqueue(new Node() { F = Math.Abs(endPoint.x - startPoint.x) + Math.Abs(endPoint.y - startPoint.x), G = 0, X = startPoint.x, Y = startPoint.y });
+            parent[startPoint.x, startPoint.y] = new Vector2Int(startPoint.x, startPoint.y);
+
+            bool success = true;
+
+            while (nodes.Count > 0)
+            {
+                Node node = nodes.Dequeue();
+
+                if (closed[node.X, node.Y])
+                    continue;
+
+                closed[node.X, node.Y] = true;
+
+                if (node.X == endPoint.x && node.Y == endPoint.y)
+                    break;
+
+                int failNumber = 0;
+                for (int i = 0; i < deltaY.Length; i++)
+                {
+                    int nextX = node.X + deltaX[i];
+                    int nextY = node.Y + deltaY[i];
+
+                    if (nextX < 0 || nextX >= boardSize || nextY < 0 || nextY >= boardSize)
+                    {
+                        failNumber++;
+                        continue;
+                    }
+
+                    if (block[nextX, nextY])
+                    {
+                        failNumber++;
+                        continue;
+                    }
+
+                    if (closed[nextX, nextY])
+                    {
+                        failNumber++;
+                        continue;
+                    }
+
+                    if (failNumber == deltaY.Length)
+                    {
+                        success = false;
+                        break;
+                    }
+
+                    int g = node.G + cost;
+                    int h = Math.Abs(endPoint.x - nextX) + Math.Abs(endPoint.y - nextY);
+                    if (open[nextX, nextY] < g + h)
+                        continue;
+
+                    open[nextX, nextY] = g + h;
+                    nodes.Enqueue(new Node() { F = g + h, G = g, X = nextX, Y = nextY });
+                    parent[nextX, nextY] = new Vector2Int(node.X, node.Y);
+                }
+            }
+
+            if (success)
+            {
+                paths.Add(new Vector2(position.x - speed + endPoint.x, position.y - speed + endPoint.y), parent);
+                GameObject move = Instantiate(this.move, transform, false);
+                move.transform.position = new Vector2(position.x - speed + endPoint.x, position.y - speed + endPoint.y);
+            }
         }
-
-
     }
 
     private void DisplayCursor()
