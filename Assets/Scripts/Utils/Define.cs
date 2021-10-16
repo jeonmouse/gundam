@@ -16,7 +16,8 @@ public class Define
         Nobody = 0,
         BrightNoa = 1, RhysJeon = 2, DominickWilliam = 3, LeonMarcenas = 4,
         AmuroRay = 5,
-        TemRay = 3001, FarrellIha = 3002
+        TemRay = 5001, FarrellIha = 5002,
+        Denim = 15001, Gene = 15002
     }
 
     public enum Mechanic

@@ -29,7 +29,7 @@ public class MechanicStatus
             case Define.Mechanic.Gundam2:
                 HitPoint = 70;
                 Energy = 30;
-                Speed = 4;
+                Speed = 2;
                 Limit = 80;
                 CloseDamage = 10;
                 RangeDamage = 3;

@@ -73,6 +73,28 @@ public class CharacterStatus
                 Management = 15;
                 Judgement = 18;
                 break;
+            case Define.Character.Denim:
+                EnName = "Denim";
+                JpName = "デニム";
+                KrName = "데님";
+                Technic = 12;
+                Concentration = 13;
+                Reflex = 11;
+                Leadership = 12;
+                Management = 10;
+                Judgement = 10;
+                break;
+            case Define.Character.Gene:
+                EnName = "Gene";
+                JpName = "ジーン";
+                KrName = "진";
+                Technic = 11;
+                Concentration = 9;
+                Reflex = 8;
+                Leadership = 11;
+                Management = 10;
+                Judgement = 7;
+                break;
         }
     }
 }

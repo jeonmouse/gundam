@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    public Character Pilot;
-    public CharacterStatus PilotStatus;
-    public MechanicStatus MechanicStatus;
+    public Character Pilot { get; protected set; }
+    public CharacterStatus PilotStatus { get; protected set; }
+    public MechanicStatus MechanicStatus { get; protected set; }
 
     private List<Vector2> movePoints = new();
     private int moveIndex = 0;
 
     public int Speed { get { return MechanicStatus.Speed; } }
 
-    public void InitUnit(Define.Character pilot, Define.Mechanic mechanic)
+    public void Init(Define.Character pilot, Define.Mechanic mechanic)
     {
         Pilot = GameManager.Data.Characters[pilot];
         PilotStatus = GameManager.Status.CharStatusDic[pilot];

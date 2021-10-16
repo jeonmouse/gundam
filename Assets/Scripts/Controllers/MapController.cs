@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    [SerializeField] private GameObject cursor;
-    [SerializeField] private GameObject move;
-    [SerializeField] private GameObject unit;
-
     private Vector2[,] map;
+    private GameObject cursor;
     private List<Vector2> inaccessible;
     private Dictionary<Vector2, Vector2Int[,]> paths;
     private GameObject selectedUnit = null;
@@ -23,6 +20,8 @@ public class MapController : MonoBehaviour
     {
         GameManager.Input.MouseAction -= OnMouseEvent;
         GameManager.Input.MouseAction += OnMouseEvent;
+
+        cursor = GameManager.Resource.Instantiate("Prefab/Cursor", transform);
         
         map = new Vector2[12, 10];
         float x = mapLeft;
@@ -56,9 +55,19 @@ public class MapController : MonoBehaviour
                 GameManager.Data.Characters.Add(Define.Character.AmuroRay, new Character(
                     Define.Character.AmuroRay, Define.Affiliation.EFSF, Define.Rank.SeamanRecruit, 0, 0));
 
-                GameObject amuroGundam = Instantiate(unit, transform, false);
-                amuroGundam.GetComponent<UnitController>().InitUnit(Define.Character.AmuroRay, Define.Mechanic.Gundam2);
+                GameObject amuroGundam = GameManager.Resource.Instantiate("Prefab/Unit", transform);
+                amuroGundam.GetComponent<UnitController>().Init(Define.Character.AmuroRay, Define.Mechanic.Gundam2);
                 amuroGundam.transform.position = map[7, 3];
+
+                GameObject denimZaku = GameManager.Resource.Instantiate("Prefab/Enemy", transform);
+                denimZaku.GetComponent<EnemyController>().Init(Define.Character.Denim, Define.Mechanic.Zaku2,
+                    Define.Affiliation.Zeon, Define.Rank.ChiefPettyOfficer, 2, 1);
+                denimZaku.transform.position = map[6, 4];
+
+                GameObject geneZaku = GameManager.Resource.Instantiate("Prefab/Enemy", transform);
+                geneZaku.GetComponent<EnemyController>().Init(Define.Character.Gene, Define.Mechanic.Zaku2,
+                    Define.Affiliation.Zeon, Define.Rank.PettyOfficer2ndClass, 1, 1);
+                geneZaku.transform.position = map[7, 4];
                 break;
         }
     }
@@ -86,12 +95,14 @@ public class MapController : MonoBehaviour
             Collider2D collider = GetColliderFromPosition(position);
             if (collider != null && selectedUnit == null)
             {
-                int speed = collider.GetComponent<UnitController>().Speed;
-                DisplayMoveRange(position, speed);
+                DisplayMoveRange(collider.gameObject, position);
                 selectedUnit = collider.gameObject;
             }
             else if (collider == null && selectedUnit != null)
             {
+                if (!paths.ContainsKey(position))
+                    return;
+                
                 Vector2Int[,] parent = paths[position];
                 selectedUnit.GetComponent<UnitController>().Move(parent, position);
             }
@@ -120,8 +131,9 @@ public class MapController : MonoBehaviour
         }
     }
 
-    private void DisplayMoveRange(Vector2 position, int speed)
+    private void DisplayMoveRange(GameObject selectedUnit, Vector2 position)
     {
+        int speed = selectedUnit.GetComponent<UnitController>().Speed;
         int boardSize = speed * 2 + 1;
         bool[,] block = new bool[boardSize, boardSize];
         List<Vector2Int> accessPoint = new();
@@ -146,7 +158,8 @@ public class MapController : MonoBehaviour
                     }
 
                     Collider2D collider = GetColliderFromPosition(pos);
-                    if (collider != null && collider.gameObject.GetComponent<UnitController>().Pilot.Affiliation != Define.Affiliation.EFSF)
+                    if (collider != null &&
+                        collider.gameObject.GetComponent<UnitController>().Pilot.Affiliation != selectedUnit.GetComponent<UnitController>().Pilot.Affiliation)
                     {
                         block[i + speed, j + speed] = true;
                         continue;
@@ -218,7 +231,7 @@ public class MapController : MonoBehaviour
                         continue;
                     }
 
-                    if (failNumber == deltaY.Length)
+                    if (failNumber == deltaY.Length || node.G > speed)
                     {
                         success = false;
                         break;
@@ -238,7 +251,7 @@ public class MapController : MonoBehaviour
             if (success)
             {
                 paths.Add(new Vector2(position.x - speed + endPoint.x, position.y - speed + endPoint.y), parent);
-                GameObject move = Instantiate(this.move, transform, false);
+                GameObject move = GameManager.Resource.Instantiate("Prefab/Move", transform);
                 move.transform.position = new Vector2(position.x - speed + endPoint.x, position.y - speed + endPoint.y);
             }
         }
