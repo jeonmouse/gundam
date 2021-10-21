@@ -56,15 +56,18 @@ public class MapController : MonoBehaviour
                     Define.Character.AmuroRay, Define.Affiliation.EFSF, Define.Rank.SeamanRecruit, 0, 0));
 
                 GameObject amuroGundam = GameManager.Resource.Instantiate("Prefab/Unit", transform);
+                amuroGundam.name = Define.Character.AmuroRay.ToString() + Define.Mechanic.Gundam2.ToString();
                 amuroGundam.GetComponent<UnitController>().Init(Define.Character.AmuroRay, Define.Mechanic.Gundam2);
                 amuroGundam.transform.position = map[7, 3];
 
                 GameObject denimZaku = GameManager.Resource.Instantiate("Prefab/Enemy", transform);
+                denimZaku.name = Define.Character.Denim.ToString() + Define.Mechanic.Zaku2.ToString();
                 denimZaku.GetComponent<EnemyController>().Init(Define.Character.Denim, Define.Mechanic.Zaku2,
                     Define.Affiliation.Zeon, Define.Rank.ChiefPettyOfficer, 2, 1);
                 denimZaku.transform.position = map[6, 4];
 
                 GameObject geneZaku = GameManager.Resource.Instantiate("Prefab/Enemy", transform);
+                denimZaku.name = Define.Character.Gene.ToString() + Define.Mechanic.Zaku2.ToString();
                 geneZaku.GetComponent<EnemyController>().Init(Define.Character.Gene, Define.Mechanic.Zaku2,
                     Define.Affiliation.Zeon, Define.Rank.PettyOfficer2ndClass, 1, 1);
                 geneZaku.transform.position = map[7, 4];
