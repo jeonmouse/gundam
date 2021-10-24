@@ -17,7 +17,7 @@ public class SoundManager
             string[] soundNames = System.Enum.GetNames(typeof(Define.Sound));
             for (int i = 0; i < soundNames.Length - 1; i++)
             {
-                GameObject gameObject = new GameObject { name = soundNames[i] };
+                GameObject gameObject = new() { name = soundNames[i] };
                 audioSources[i] = gameObject.AddComponent<AudioSource>();
                 gameObject.transform.parent = root.transform;
             }
