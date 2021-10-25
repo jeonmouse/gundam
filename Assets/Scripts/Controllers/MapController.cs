@@ -10,11 +10,20 @@ public class MapController : MonoBehaviour
     private List<Vector2> inaccessible;
     private Dictionary<Vector2, Vector2Int[,]> paths;
     private GameObject selectedUnit = null;
+    private List<UnitController> units = new List<UnitController>();
 
     private const float mapLeft = -10.0f;
     private const float mapRight = 2.0f;
     private const float mapTop = 5.625f;
     private const float mapBottom = -4.375f;
+
+    private enum Mode
+    {
+        Selected = 0,
+        Moved = 1,
+        Attack = 2
+    }
+    private Mode mode = Mode.Selected;
 
     private void Start()
     {
@@ -39,6 +48,7 @@ public class MapController : MonoBehaviour
         }
 
         SetBattleScene();
+        StartBattle();
     }
 
     private void SetBattleScene()
@@ -55,24 +65,33 @@ public class MapController : MonoBehaviour
                 GameManager.Data.Characters.Add(Define.Character.AmuroRay, new Character(
                     Define.Character.AmuroRay, Define.Affiliation.EFSF, Define.Rank.SeamanRecruit, 0, 0));
 
-                GameObject amuroGundam = GameManager.Resource.Instantiate("Prefab/Unit", transform);
-                amuroGundam.name = Define.Character.AmuroRay.ToString() + Define.Mechanic.Gundam2.ToString();
-                amuroGundam.GetComponent<UnitController>().Init(Define.Character.AmuroRay, Define.Mechanic.Gundam2);
-                amuroGundam.transform.position = map[7, 3];
+                CreateUnit(Define.Character.AmuroRay, Define.Mechanic.Gundam2, 7, 3);
+                CreateUnit(Define.Character.Denim, Define.Mechanic.Zaku2, Define.Affiliation.Zeon, Define.Rank.ChiefPettyOfficer, 2, 1, 6, 4);
+                CreateUnit(Define.Character.Gene, Define.Mechanic.Zaku2, Define.Affiliation.Zeon, Define.Rank.PettyOfficer2ndClass, 1, 1, 7, 4);
 
-                GameObject denimZaku = GameManager.Resource.Instantiate("Prefab/Enemy", transform);
-                denimZaku.name = Define.Character.Denim.ToString() + Define.Mechanic.Zaku2.ToString();
-                denimZaku.GetComponent<EnemyController>().Init(Define.Character.Denim, Define.Mechanic.Zaku2,
-                    Define.Affiliation.Zeon, Define.Rank.ChiefPettyOfficer, 2, 1);
-                denimZaku.transform.position = map[6, 4];
-
-                GameObject geneZaku = GameManager.Resource.Instantiate("Prefab/Enemy", transform);
-                denimZaku.name = Define.Character.Gene.ToString() + Define.Mechanic.Zaku2.ToString();
-                geneZaku.GetComponent<EnemyController>().Init(Define.Character.Gene, Define.Mechanic.Zaku2,
-                    Define.Affiliation.Zeon, Define.Rank.PettyOfficer2ndClass, 1, 1);
-                geneZaku.transform.position = map[7, 4];
                 break;
         }
+    }
+
+    private void CreateUnit(Define.Character character, Define.Mechanic mechanic, int x, int y)
+    {
+        GameObject go = GameManager.Resource.Instantiate("Prefab/Unit", transform);
+        go.name = character.ToString() + mechanic.ToString();
+        go.transform.position = map[x, y];
+        UnitController unit = go.GetComponent<UnitController>();
+        unit.Init(character, mechanic);
+        units.Add(unit);
+    }
+    
+    private void CreateUnit(Define.Character character, Define.Mechanic mechanic, Define.Affiliation affiliation, Define.Rank rank,
+        int pilotLevel, int captainLevel, int x, int y)
+    {
+        GameObject go = GameManager.Resource.Instantiate("Prefab/Unit", transform);
+        go.name = character.ToString() + mechanic.ToString();
+        go.transform.position = map[x, y];
+        UnitController unit = go.GetComponent<UnitController>();
+        unit.Init(character, mechanic, affiliation, rank, pilotLevel, captainLevel);
+        units.Add(unit);
     }
 
     private void OnMouseEvent(Define.MouseEvent evt)
@@ -83,16 +102,20 @@ public class MapController : MonoBehaviour
                 DisplayCursor();
                 break;
             case Define.MouseEvent.Click:
-                ClickMap();
+                ClickMap(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 break;
             case Define.MouseEvent.Hold:
                 break;
         }
     }
 
-    private void ClickMap()
+    public void StartBattle()
     {
-        Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        ClickMap(map[7, 3]);
+    }
+
+    private void ClickMap(Vector2 position)
+    {
         if (GetPivotPosition(ref position))
         {
             Collider2D collider = GetColliderFromPosition(position);
@@ -132,6 +155,11 @@ public class MapController : MonoBehaviour
                 return 0;
             return F < other.F ? 1 : -1;
         }
+    }
+
+    private void DisplayAttackRange(GameObject selectedUnit, Vector2 position)
+    {
+
     }
 
     private void DisplayMoveRange(GameObject selectedUnit, Vector2 position)

@@ -20,12 +20,4 @@ public class ResourceManager
 
         return Object.Instantiate(prefab, parent);
     }
-
-    public void Destroy(GameObject gameObject)
-    {
-        if (gameObject == null)
-            return;
-
-        Object.Destroy(gameObject);
-    }
 }

@@ -23,6 +23,15 @@ public class UnitController : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Icons/" + mechanic.ToString());
     }
 
+    public void Init(Define.Character pilot, Define.Mechanic mechanic, Define.Affiliation affiliation, Define.Rank rank, int pilotLevel, int captainLevel)
+    {
+        Pilot = new Character(pilot, affiliation, rank, pilotLevel, captainLevel);
+        PilotStatus = GameManager.Status.CharStatusDic[pilot];
+        MechanicStatus = GameManager.Status.MechaStatusDic[mechanic];
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Icons/" + mechanic.ToString());
+    }
+
     public void Move(Vector2Int[,] parent, Vector2 destination)
     {
         if (transform.position == (Vector3)destination)
@@ -54,5 +63,10 @@ public class UnitController : MonoBehaviour
             transform.Translate(movePoints[moveIndex]);
             moveIndex++;
         }
+    }
+
+    public void OnDamaged()
+    {
+        Destroy(gameObject);
     }
 }
