@@ -157,7 +157,9 @@ public class UIDialogue : UIBase
 
     private void SetScript()
     {
-        Script script = GameManager.Data.Scripts[scriptNum];
+        // DEL?
+        OldScript script = GameManager.Data.Scripts[scriptNum];
+
         int position = script.Position;
         string speaker = script.Speaker;
         if (position == 0)
@@ -190,21 +192,6 @@ public class UIDialogue : UIBase
         {
             speaker = speaker.Replace("<MainCharacter>", mainChar);
             string content = script.Content.Replace("<MainCharacter>", mainChar);
-
-            /*
-            if (content.Contains("/"))
-            {
-                string[] strArray = content.Split('/');
-                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.BrightNoa)
-                    content = strArray[0];
-                else if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.RhysJeon)
-                    content = strArray[1];
-                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.DominickWilliam)
-                    content = strArray[2];
-                if (GameManager.Data.Common.MainCharacter == Define.MainCharacter.LeonMarcenas)
-                    content = strArray[3];
-            }
-            */
 
             GetText((int)Texts.SpeakerText).text = speaker;
             GetText((int)Texts.ContentText).text = content;

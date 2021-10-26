@@ -14,7 +14,9 @@ public class DataManager
     public EnvironmentData Environment { get; set; }
     public CommonData Common { get; set; }
     public Dictionary<Define.Character, Character> Characters { get; set; } = new Dictionary<Define.Character, Character>();
-    public Dictionary<int, Script> Scripts { get; set; } = new Dictionary<int, Script>();
+
+    // DEL?
+    public Dictionary<int, OldScript> Scripts { get; set; } = new Dictionary<int, OldScript>();
 
     public void Init()
     {
@@ -24,10 +26,11 @@ public class DataManager
         Common = new CommonData();
     }
 
+    // DEL?
     public void SetLanguage(Define.Language language)
     {
         Scripts.Clear();
-        Scripts = LoadJson<ScriptData, int, Script>(language.ToString()).MakeDic();
+        Scripts = LoadJson<ScriptData, int, OldScript>(language.ToString()).MakeDic();
     }
 
     public void Load(int index)

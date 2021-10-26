@@ -86,6 +86,8 @@ public class Util
         }
     }
 
+
+    // Del?
     public static Define.Character DefineCharacter(string name)
     {
         switch (name)

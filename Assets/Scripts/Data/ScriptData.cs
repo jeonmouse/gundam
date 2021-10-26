@@ -3,25 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// DEL?
 [Serializable]
-public class ScriptData : ILoader<int, Script>
+public class ScriptData : ILoader<int, OldScript>
 {
-    public List<Script> Scripts = new List<Script>();
+    public List<OldScript> Scripts = new List<OldScript>();
 
-    public Dictionary<int, Script> MakeDic()
+    public Dictionary<int, OldScript> MakeDic()
     {
-        Dictionary<int, Script> dic = new Dictionary<int, Script>();
-        foreach (Script script in Scripts)
+        Dictionary<int, OldScript> dic = new Dictionary<int, OldScript>();
+        foreach (OldScript script in Scripts)
             dic.Add(script.Number, script);
         return dic;
     }
 }
 
+// DEL?
 [Serializable]
-public class Script
+public class OldScript
 {
     public int Number;
     public int Position;
     public string Speaker;
     public string Content;
 }
+

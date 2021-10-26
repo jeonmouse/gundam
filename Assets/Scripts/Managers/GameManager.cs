@@ -19,20 +19,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    DataManager data = new DataManager();
+    DataManager data = new();
     public static DataManager Data { get { return instance.data; } }
 
-    InputManager input = new InputManager();
+    InputManager input = new();
     public static InputManager Input { get { return instance.input; } }
 
-    ResourceManager resource = new ResourceManager();
+    ResourceManager resource = new();
     public static ResourceManager Resource { get { return instance.resource; } }
 
-    SoundManager sound = new SoundManager();
+    SoundManager sound = new();
     public static SoundManager Sound { get { return instance.sound; } }
 
-    StatusManager status = new StatusManager();
+    StatusManager status = new();
     public static StatusManager Status { get { return instance.status; } }
+
+    ScriptManager script = new();
+    public static ScriptManager Script { get { return instance.script; } }
 
     private void Awake()
     {
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
         instance.sound.Init();
         instance.status.Init();
 
+        // DEL?
         instance.data.SetLanguage(Data.Environment.Language);
     }
 
