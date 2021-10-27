@@ -6,18 +6,15 @@ public class KoreanScript : BaseScript
 {
     public override Dictionary<int, Script> Init(Define.Dialogue dialogue)
     {
-        switch (dialogue)
+        return dialogue switch
         {
-            case Define.Dialogue.TemRayRoom:
-                return GetTemRayRoomScripts();
-            case Define.Dialogue.GundamFactory:
-                return GetGundamFactoryScripts();
-            default:
-                return null;
-        }
+            Define.Dialogue.TemRayRoom => GetTemRayRoomScript(),
+            Define.Dialogue.GundamFactory => GetGundamFactoryScript(),
+            _ => null,
+        };
     }
 
-    public Dictionary<int, Script> GetTemRayRoomScripts()
+    public Dictionary<int, Script> GetTemRayRoomScript()
     {
         Dictionary<int, Script> scripts = new();
 
@@ -25,15 +22,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "·¹ÀÌ ´ëÀ§´Ô, »çÀÌµå 7¿¡ ÀÔÇ×Çß½À´Ï´Ù. Áï½Ã ºê¸´Áö·Î ¿Í ÁÖ½Ê½Ã¿À"
+            Content = "ë ˆì´ ëŒ€ìœ„ë‹˜, ì‚¬ì´ë“œ 7ì— ì…í•­í–ˆìŠµë‹ˆë‹¤. ì¦‰ì‹œ ë¸Œë¦¿ì§€ë¡œ ì™€ ì£¼ì‹­ì‹œì˜¤"
         });
 
         scripts.Add(1, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÅÛ",
-            Content = "À½. ¾Ë¾Ò³×. <MainCharacter> ±ºÀÌ¶ó°í Çß³ª?"
+            Speaker = "í…œ",
+            Content = "ìŒ. ì•Œì•˜ë„¤. <MainCharacter> êµ°ì´ë¼ê³  í–ˆë‚˜?"
         });
 
         scripts.Add(2, new Script()
@@ -41,15 +38,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "¿¹ ´ëÀ§´Ô"
+            Content = "ì˜ˆ ëŒ€ìœ„ë‹˜"
         });
 
         scripts.Add(3, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÅÛ",
-            Content = "ÀÔ´ëÇÑ Áö´Â ¾ó¸¶³ª µÆÁö?"
+            Speaker = "í…œ",
+            Content = "ì…ëŒ€í•œ ì§€ëŠ” ì–¼ë§ˆë‚˜ ëì§€?"
         });
 
         scripts.Add(4, new Script()
@@ -57,15 +54,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "6°³¿ù µÇ¾ú½À´Ï´Ù"
+            Content = "6ê°œì›” ë˜ì—ˆìŠµë‹ˆë‹¤"
         });
 
         scripts.Add(5, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÅÛ",
-            Content = "°Ç´ãÀÌ ¾ç»êµÇ¸é ÀÚ³×°°Àº ÀşÀº Ä£±¸µéÀÌ ¾È ½Î¿öµµ ÀüÀïÀº ³¡³¯ °É¼¼"
+            Speaker = "í…œ",
+            Content = "ê±´ë‹´ì´ ì–‘ì‚°ë˜ë©´ ìë„¤ê°™ì€ ì Šì€ ì¹œêµ¬ë“¤ì´ ì•ˆ ì‹¸ì›Œë„ ì „ìŸì€ ëë‚  ê±¸ì„¸"
         });
 
         scripts.Add(6, new Script()
@@ -73,7 +70,7 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "Àú »çÁøÀº..."
+            Content = "ì € ì‚¬ì§„ì€..."
         });
 
         scripts.Add(7, new Script()
@@ -81,23 +78,23 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Select2,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "¾Æµå´ÔÀÌ½Ê´Ï±î?/¾Æµå´ÔÀÌ½Ã±º¿ä. ÀÌ¸§Àº ¾î¶»°Ô µÇ³ª¿ä?"
+            Content = "ì•„ë“œë‹˜ì´ì‹­ë‹ˆê¹Œ?/ì•„ë“œë‹˜ì´ì‹œêµ°ìš”. ì´ë¦„ì€ ì–´ë–»ê²Œ ë˜ë‚˜ìš”?"
         });
 
         scripts.Add(8, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÅÛ",
-            Content = "±×·¡, ÀÌ·± ¾î¸°¾Öµéµµ °Ô¸±¶ó·Î ½Î¿î´Ù´øµ¥ Á¤¸»ÀÎ°¡?"
+            Speaker = "í…œ",
+            Content = "ê·¸ë˜, ì´ëŸ° ì–´ë¦°ì• ë“¤ë„ ê²Œë¦´ë¼ë¡œ ì‹¸ìš´ë‹¤ë˜ë° ì •ë§ì¸ê°€?"
         });
 
         scripts.Add(9, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÅÛ",
-            Content = "¾Æ, ¾Æ¹«·Î¶ó³×. ÀÌ·± ¾î¸°¾Öµéµµ °Ô¸±¶ó·Î ½Î¿î´Ù´øµ¥ Á¤¸»ÀÎ°¡?"
+            Speaker = "í…œ",
+            Content = "ì•„, ì•„ë¬´ë¡œë¼ë„¤. ì´ëŸ° ì–´ë¦°ì• ë“¤ë„ ê²Œë¦´ë¼ë¡œ ì‹¸ìš´ë‹¤ë˜ë° ì •ë§ì¸ê°€?"
         });
 
         scripts.Add(10, new Script()
@@ -105,21 +102,21 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "³×, ±×·¸´Ù°í ÇÕ´Ï´Ù"
+            Content = "ë„¤, ê·¸ë ‡ë‹¤ê³  í•©ë‹ˆë‹¤"
         });
 
         scripts.Add(11, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÅÛ",
-            Content = "²ûÂïÇÏ±º"
+            Speaker = "í…œ",
+            Content = "ë”ì°í•˜êµ°"
         });
 
         return scripts;
     }
 
-    public Dictionary<int, Script> GetGundamFactoryScripts()
+    public Dictionary<int, Script> GetGundamFactoryScript()
     {
         Dictionary<int, Script> scripts = new();
 
@@ -128,15 +125,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "ÆÄ·¼ ÁßÀ§´Ô, °Ç´ã 1È£±â Á¡°Ë ¿Ï·á ÇÏ¿´½À´Ï´Ù"
+            Content = "???? ??????, ???? 1???? ???? ???? ??????????"
         });
 
         scripts.Add(1, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÆÄ·¼",
-            Content = "¼ö°íÇß´Ù. ÀÌÁ¦ È­ÀÌÆ®º£ÀÌ½º·Î µ¹¾Æ°¡ÀÚ"
+            Speaker = "????",
+            Content = "????????. ???? ?????????????? ????????"
         });
 
         scripts.Add(2, new Script()
@@ -144,15 +141,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "Àú... ÆÄ·¼ ÁßÀ§´Ô"
+            Content = "??... ???? ??????"
         });
 
         scripts.Add(3, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÆÄ·¼",
-            Content = "¿Ö, ¹«½¼ÀÏ ÀÖ³ª?"
+            Speaker = "????",
+            Content = "??, ?????? ?????"
         });
 
         scripts.Add(4, new Script()
@@ -160,15 +157,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "°Ç´ãÀ» È­ÀÌÆ®º£ÀÌ½º·Î Å¾ÀçÇÏ´Â µ¿¾È Á¦°¡ Å¸°í ÀÖ¾îµµ µÉ±î¿ä?"
+            Content = "?????? ?????????????? ???????? ???? ???? ???? ?????? ???????"
         });
 
         scripts.Add(5, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÆÄ·¼",
-            Content = "¹«½¼ ¼Ò¸°°¡ ±×°Ô?"
+            Speaker = "????",
+            Content = "???? ?????? ?????"
         });
 
         scripts.Add(6, new Script()
@@ -176,15 +173,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "Àú´Â ÈÄº¸ ÆÄÀÏ·µÀÌ¶ó Å¾½ÂÇÒ ±âÈ¸°¡ ¸¹ÀÌ ¾øÀ» °Í °°¾Æ Áö±İÀÌ¶óµµ Å¸º¸°í ½Í½À´Ï´Ù!"
+            Content = "???? ???? ?????????? ?????? ?????? ???? ???? ?? ???? ?????????? ?????? ????????!"
         });
 
         scripts.Add(7, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÆÄ·¼",
-            Content = "´©¿ö¼­ Å¸°í ÀÖÀ¸¸é ¾îÁö·¯¿ïÅÙµ¥?"
+            Speaker = "????",
+            Content = "?????? ???? ?????? ?????????????"
         });
 
         scripts.Add(10, new Script()
@@ -192,15 +189,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "±¦Âú½À´Ï´Ù. °ÆÁ¤¸¶½Ê¼î!"
+            Content = "??????????. ??????????!"
         });
 
         scripts.Add(11, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "ÆÄ·¼",
-            Content = "±×·¡ ¾Ë°Ú´Ù. È­ÀÌÆ®º£ÀÌ½º¿¡¼­ ¸¸³ªÀÚ"
+            Speaker = "????",
+            Content = "???? ??????. ???????????????? ??????"
         });
 
         scripts.Add(12, new Script()
@@ -208,7 +205,7 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "°¨»çÇÕ´Ï´Ù!"
+            Content = "??????????!"
         });
 
         return scripts;
