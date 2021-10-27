@@ -125,15 +125,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "???? ??????, ???? 1???? ???? ???? ??????????"
+            Content = "파렐 중위님, 건담 1호기 점검 완료 하였습니다"
         });
 
         scripts.Add(1, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "????",
-            Content = "????????. ???? ?????????????? ????????"
+            Speaker = "파렐",
+            Content = "수고했다. 이제 화이트베이스로 돌아가자"
         });
 
         scripts.Add(2, new Script()
@@ -141,15 +141,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "??... ???? ??????"
+            Content = "저... 파렐 중위님"
         });
 
         scripts.Add(3, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "????",
-            Content = "??, ?????? ?????"
+            Speaker = "파렐",
+            Content = "왜, 무슨일 있나?"
         });
 
         scripts.Add(4, new Script()
@@ -157,15 +157,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "?????? ?????????????? ???????? ???? ???? ???? ?????? ???????"
+            Content = "건담을 화이트베이스로 탑재하는 동안 제가 타고 있어도 될까요?"
         });
 
         scripts.Add(5, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "????",
-            Content = "???? ?????? ?????"
+            Speaker = "파렐",
+            Content = "무슨 소린가 그게?"
         });
 
         scripts.Add(6, new Script()
@@ -173,15 +173,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "???? ???? ?????????? ?????? ?????? ???? ???? ?? ???? ?????????? ?????? ????????!"
+            Content = "저는 후보 파일럿이라 탑승할 기회가 많이 없을 것 같아 지금이라도 타보고 싶습니다!"
         });
 
         scripts.Add(7, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "????",
-            Content = "?????? ???? ?????? ?????????????"
+            Speaker = "파렐",
+            Content = "누워서 타고 있으면 어지러울텐데?"
         });
 
         scripts.Add(10, new Script()
@@ -189,15 +189,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "??????????. ??????????!"
+            Content = "괜찮습니다. 걱정마십쇼!"
         });
 
         scripts.Add(11, new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "????",
-            Content = "???? ??????. ???????????????? ??????"
+            Speaker = "파렐",
+            Content = "그래 알겠다. 화이트베이스에서 만나자"
         });
 
         scripts.Add(12, new Script()
@@ -205,7 +205,7 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "??????????!"
+            Content = "감사합니다!"
         });
 
         return scripts;
