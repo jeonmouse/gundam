@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseScript
 {
-    public abstract Dictionary<int, Script> Init(Define.Dialogue dialogue);
+    public abstract List<Script> Init(Define.Dialogue dialogue);
 }
 
 public class Script

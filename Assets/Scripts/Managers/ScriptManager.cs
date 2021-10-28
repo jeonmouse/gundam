@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ScriptManager
 {
-    public Dictionary<int, Script> GetScriptDic(Define.Language language, Define.Dialogue dialogue)
+    public List<Script> GetScripts(Define.Language language, Define.Dialogue dialogue)
     {
         switch (language)
         {
             case Define.Language.English:
-                return null;
+                EnglishScript english = new();
+                return english.Init(dialogue);
             case Define.Language.Japanese:
-                return null;
+                JapaneseScript japanese = new();
+                return japanese.Init(dialogue);
             case Define.Language.Korean:
                 KoreanScript korean = new();
                 return korean.Init(dialogue);

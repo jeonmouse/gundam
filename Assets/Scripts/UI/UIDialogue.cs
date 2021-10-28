@@ -39,6 +39,7 @@ public class UIDialogue : UIBase
         SelectPanel2
     }
 
+    private List<Script> scripts;
     private Image fadeImage;
     private bool fadeOut = false;
     private string mainChar;
@@ -87,16 +88,16 @@ public class UIDialogue : UIBase
             case Define.Dialogue.TemRayRoom:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/TemRayRoom");
                 GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
-                scriptNum = (int)Define.Dialogue.TemRayRoom;
                 GameManager.Data.Common.Battle = Define.Battle.GundamRising;
                 break;
             case Define.Dialogue.GundamFactory:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/GundamFactory");
                 GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
-                scriptNum = (int)Define.Dialogue.GundamFactory;
                 GameManager.Data.Common.Battle = Define.Battle.GundamRising;
                 break;
         }
+
+        scripts = GameManager.Script.GetScripts(GameManager.Data.Environment.Language, GameManager.Data.Common.Dialogue);
     }
 
     private void OnHover(PointerEventData data)
@@ -157,36 +158,33 @@ public class UIDialogue : UIBase
 
     private void SetScript()
     {
-        // DEL?
-        OldScript script = GameManager.Data.Scripts[scriptNum];
-
-        int position = script.Position;
-        string speaker = script.Speaker;
-        if (position == 0)
-            GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
-        else if (position == 1)
-            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
-        else
+        if (scriptNum > scripts.Count - 1)
         {
             StartCoroutine(FadeOutCoroutine());
             return;
         }
 
-        if (speaker.Contains("Select"))
+        Script script = scripts[scriptNum];
+
+        Script.Position position = script.Place;
+        string speaker = script.Speaker;
+
+        if (position == Script.Position.Left)
+            GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
+        else if (position == Script.Position.Right)
+            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
+
+        if (script.Type == Script.DialogType.Select2)
         {
             GetText((int)Texts.ContentText).gameObject.SetActive(false);
             GetGameObject((int)GameObjects.SelectPanel2).SetActive(true);
 
-            int selectCount = int.Parse(speaker.Substring(speaker.Length - 1));
-            if (selectCount == 2)
-            {
-                string[] contents = script.Content.Split('/');
+            string[] contents = script.Content.Split('/');
 
-                GetText((int)Texts.SpeakerText).text = mainChar;
-                GetText((int)Texts.SelectText2_1).text = contents[0];
-                GetText((int)Texts.SelectText2_2).text = contents[1];
-                eventOccurred = true;
-            }
+            GetText((int)Texts.SpeakerText).text = mainChar;
+            GetText((int)Texts.SelectText2_1).text = contents[0];
+            GetText((int)Texts.SelectText2_2).text = contents[1];
+            eventOccurred = true;
         }
         else
         {

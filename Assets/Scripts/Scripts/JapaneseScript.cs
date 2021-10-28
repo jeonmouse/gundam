@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KoreanScript : BaseScript
+public class JapaneseScript : BaseScript
 {
     public override List<Script> Init(Define.Dialogue dialogue)
     {
@@ -18,19 +18,20 @@ public class KoreanScript : BaseScript
     {
         List<Script> scripts = new();
 
-        scripts.Add(new Script() {
+        scripts.Add(new Script()
+        {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "레이 대위님, 사이드 7에 입항했습니다. 즉시 브릿지로 와 주십시오."
+            Content = "伝令。レイ大尉、サイド７へ入港いたしました。至急、ブリッジへおいでください。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "음. 알았네. <MainCharacter> 군이라고 했나?"
+            Speaker = "テム",
+            Content = "ん、了解した, <MainCharacter>君といったね?"
         });
 
         scripts.Add(new Script()
@@ -38,15 +39,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "예 대위님."
+            Content = "はい。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "입대한 지는 얼마나 됐지?"
+            Speaker = "テム",
+            Content = "何ヶ月になるね？軍に入って?"
         });
 
         scripts.Add(new Script()
@@ -54,15 +55,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "6개월 되었습니다."
+            Content = "6ヶ月であります。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "건담이 양산되면 자네같은 젊은 친구들이 안 싸워도 전쟁은 끝날 걸세."
+            Speaker = "テム",
+            Content = "ガンダムが量産されるようになれば、君のような若者が実戦に出なくとも戦争は終わろう。"
         });
 
         scripts.Add(new Script()
@@ -70,7 +71,7 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "저 사진은..."
+            Content = "あの写真は···"
         });
 
         scripts.Add(new Script()
@@ -78,23 +79,23 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Select2,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "아드님이십니까?/아드님이시군요. 이름은 어떻게 되나요?"
+            Content = "お子様でらっしゃいますか？/息子さんですね。 お名前は何ですか?"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "그래, 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
+            Speaker = "テム",
+            Content = "ああ。こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "아, 아무로라네. 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
+            Speaker = "テム",
+            Content = "アムロです。 こんな歳の子がゲリラ戦に出ているとの噂も聞くが、本当かね？"
         });
 
         scripts.Add(new Script()
@@ -102,15 +103,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "네, 그렇다고 합니다."
+            Content = "はい、事実だそうであります。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "끔찍하군."
+            Speaker = "テム",
+            Content = "嫌だねえ。"
         });
 
         return scripts;
@@ -125,15 +126,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "파렐 중위님, 건담 1호기 점검 완료 하였습니다."
+            Content = "ファレル中尉のガンダム1号機、点検完了しました。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "수고했다. 이제 화이트베이스로 돌아가자."
+            Speaker = "ファレル",
+            Content = "お疲れさま、もうホワイトベースに戻ろう。"
         });
 
         scripts.Add(new Script()
@@ -141,15 +142,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "저... 파렐 중위님."
+            Content = "あの…ファレル中尉様。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "왜, 무슨일 있나?"
+            Speaker = "ファレル",
+            Content = "何、何かあったの？"
         });
 
         scripts.Add(new Script()
@@ -157,15 +158,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "건담을 화이트베이스로 탑재하는 동안 제가 타고 있어도 될까요?"
+            Content = "ガンダムをホワイトベースで搭載する間、私が乗っていてもいいですか。"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "무슨 소린가 그게?"
+            Speaker = "ファレル",
+            Content = "何言ってるの？"
         });
 
         scripts.Add(new Script()
@@ -180,8 +181,8 @@ public class KoreanScript : BaseScript
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "누워서 타고 있으면 어지러울텐데?"
+            Speaker = "ファレル",
+            Content = "コックピットに横になって乗っていたらくらくらするんじゃない？"
         });
 
         scripts.Add(new Script()
@@ -189,15 +190,15 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "괜찮습니다. 걱정마십쇼!"
+            Content = "大丈夫です。心配しないでください!"
         });
 
         scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "그래 알겠다. 화이트베이스에서 만나자."
+            Speaker = "ファレル",
+            Content = "そうわかった。ホワイトベースで会おうね。"
         });
 
         scripts.Add(new Script()
@@ -205,7 +206,7 @@ public class KoreanScript : BaseScript
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "감사합니다!"
+            Content = "ありがとうございました！"
         });
 
         return scripts;

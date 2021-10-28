@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnglishScript : BaseScript
 {
-    public override Dictionary<int, Script> Init(Define.Dialogue dialogue)
+    public override List<Script> Init(Define.Dialogue dialogue)
     {
         return dialogue switch
         {
@@ -14,11 +14,11 @@ public class EnglishScript : BaseScript
         };
     }
 
-    public Dictionary<int, Script> GetTemRayRoomScript()
+    public List<Script> GetTemRayRoomScript()
     {
-        Dictionary<int, Script> scripts = new();
+        List<Script> scripts = new();
 
-        scripts.Add(0, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
@@ -26,187 +26,187 @@ public class EnglishScript : BaseScript
             Content = "Excuse me, Lieutenant Ray, We're docking at Side 7 now. Please report to the bridge at once."
         });
 
-        scripts.Add(1, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "음. 알았네. <MainCharacter> 군이라고 했나?"
+            Speaker = "Tem",
+            Content = "Very well. Your name is <MainCharacter>, isn't it?"
         });
 
-        scripts.Add(2, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "예 대위님"
+            Content = "Yes, Sir."
         });
 
-        scripts.Add(3, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "입대한 지는 얼마나 됐지?"
+            Speaker = "Tem",
+            Content = "How long have you been in the military?"
         });
 
-        scripts.Add(4, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "6개월 되었습니다"
+            Content = "6 months, sir."
         });
 
-        scripts.Add(5, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "건담이 양산되면 자네같은 젊은 친구들이 안 싸워도 전쟁은 끝날 걸세"
+            Speaker = "Tem",
+            Content = "Once we mass-produce the Gundam, we'll be able to end the war without sending young men like you into battle."
         });
 
-        scripts.Add(6, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "저 사진은..."
+            Content = "That picture is..."
         });
 
-        scripts.Add(7, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Select2,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "아드님이십니까?/아드님이시군요. 이름은 어떻게 되나요?"
+            Content = "Your son, sir?/Maybe your son. What's his name?"
         });
 
-        scripts.Add(8, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "그래, 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
+            Speaker = "Tem",
+            Content = "Yes. I hear there are boys his age fighting as guerrillas. Is that true?"
         });
 
-        scripts.Add(9, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "아, 아무로라네. 이런 어린애들도 게릴라로 싸운다던데 정말인가?"
+            Speaker = "Tem",
+            Content = "His name is Amuro. I hear there are boys his age fighting as guerrillas. Is that true?"
         });
 
-        scripts.Add(10, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "네, 그렇다고 합니다"
+            Content = "Yes, I'm told that it happens."
         });
 
-        scripts.Add(11, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "템",
-            Content = "끔찍하군"
+            Speaker = "Tem",
+            Content = "How terrible."
         });
 
         return scripts;
     }
 
-    public Dictionary<int, Script> GetGundamFactoryScript()
+    public List<Script> GetGundamFactoryScript()
     {
-        Dictionary<int, Script> scripts = new();
+        List<Script> scripts = new();
 
-        scripts.Add(0, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "파렐 중위님, 건담 1호기 점검 완료 하였습니다"
+            Content = "Lieutenant Farrell, we've completed the inspection of Gundam 1"
         });
 
-        scripts.Add(1, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "수고했다. 이제 화이트베이스로 돌아가자"
+            Speaker = "Farrell",
+            Content = "Thank you. Let's go back to Whitebase."
         });
 
-        scripts.Add(2, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "저... 파렐 중위님"
+            Content = "... Lieutenant Farrell."
         });
 
-        scripts.Add(3, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "왜, 무슨일 있나?"
+            Speaker = "Farrell",
+            Content = "Why, what's wrong?"
         });
 
-        scripts.Add(4, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "건담을 화이트베이스로 탑재하는 동안 제가 타고 있어도 될까요?"
+            Content = "Can I stay on board while Gundam is loaded on the white base?"
         });
 
-        scripts.Add(5, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "무슨 소린가 그게?"
+            Speaker = "Farrell",
+            Content = "What does that mean?"
         });
 
-        scripts.Add(6, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "저는 후보 파일럿이라 탑승할 기회가 많이 없을 것 같아 지금이라도 타보고 싶습니다!"
+            Content = "I'm a candidate pilot, so I don't think I'll have many chances to board, so I'd like to ride it now!"
         });
 
-        scripts.Add(7, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "누워서 타고 있으면 어지러울텐데?"
+            Speaker = "Farrell",
+            Content = "You'd be dizzy if you were lying in the cockpit."
         });
 
-        scripts.Add(10, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "괜찮습니다. 걱정마십쇼!"
+            Content = "It's all right. Don't worry!"
         });
 
-        scripts.Add(11, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Left,
-            Speaker = "파렐",
-            Content = "그래 알겠다. 화이트베이스에서 만나자"
+            Speaker = "Farrell",
+            Content = "Okay, I'll meet you in Whitebase."
         });
 
-        scripts.Add(12, new Script()
+        scripts.Add(new Script()
         {
             Type = Script.DialogType.Normal,
             Place = Script.Position.Right,
             Speaker = "<MainCharacter>",
-            Content = "감사합니다!"
+            Content = "Thank you!"
         });
 
         return scripts;
