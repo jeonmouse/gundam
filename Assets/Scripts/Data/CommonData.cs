@@ -7,7 +7,8 @@ using UnityEngine;
 public class CommonData
 {
     public Define.Character MainCharacter;
-    public Define.Dialogue Dialogue;
-    public Define.Battle Battle;
+    public Define.War War;
+    public Define.Scene Scene;
+    public Define.Scene NextScene;
     public bool AskAmuroName;
 }

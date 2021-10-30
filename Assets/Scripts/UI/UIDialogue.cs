@@ -41,6 +41,7 @@ public class UIDialogue : UIBase
 
     private List<Script> scripts;
     private Image fadeImage;
+    private Define.DialogueEvent evt;
     private bool fadeOut = false;
     private string mainChar;
     private int scriptNum = 0;
@@ -65,7 +66,7 @@ public class UIDialogue : UIBase
         mainChar = Util.GetMainCharacterName(GameManager.Data.Environment.Language,
             GameManager.Data.Common.MainCharacter);
 
-        SetDialogueScene();
+        InitScene();
 
         if (GameManager.Data.Environment.Language == Define.Language.Japanese) SetJapaneseFont();
 
@@ -81,23 +82,25 @@ public class UIDialogue : UIBase
         SetScript();
     }
 
-    private void SetDialogueScene()
+    private void InitScene()
     {
-        switch (GameManager.Data.Common.Dialogue)
+        GameManager.Data.Common.Scene = GameManager.Data.Common.NextScene;
+
+        switch (GameManager.Data.Common.Scene)
         {
-            case Define.Dialogue.TemRayRoom:
+            case Define.Scene.TemRayRoom:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/TemRayRoom");
                 GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/TemRay");
-                GameManager.Data.Common.Battle = Define.Battle.GundamRising;
+                GameManager.Data.Common.NextScene = Define.Scene.GundamRising;
                 break;
-            case Define.Dialogue.GundamFactory:
+            case Define.Scene.GundamFactory:
                 GetRawImage((int)RawImages.BackgroundImage).texture = GameManager.Resource.Load<Texture2D>("Backgrounds/GundamFactory");
                 GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/FarrellIha");
-                GameManager.Data.Common.Battle = Define.Battle.GundamRising;
+                GameManager.Data.Common.NextScene = Define.Scene.GundamRising;
                 break;
         }
 
-        scripts = GameManager.Script.GetScripts(GameManager.Data.Environment.Language, GameManager.Data.Common.Dialogue);
+        scripts = GameManager.Script.GetScripts(GameManager.Data.Environment.Language, GameManager.Data.Common.Scene);
     }
 
     private void OnHover(PointerEventData data)
@@ -107,15 +110,15 @@ public class UIDialogue : UIBase
 
     private void OnClickButton2_1(PointerEventData data)
     {
-        Event.GetDialogueEventValues(scriptNum, 1, out int nextId, out int lastId, out int joinId);
-        GameManager.Data.SetEventFlag(scriptNum, 1);
+        Event.GetDialogueEventValues(evt, 1, out int nextId, out int lastId, out int joinId);
+        GameManager.Data.SetEventFlag(evt, 1);
         RestartDialogue(nextId, lastId, joinId);
     }
 
     private void OnClickButton2_2(PointerEventData data)
     {
-        Event.GetDialogueEventValues(scriptNum, 2, out int nextId, out int lastId, out int joinId);
-        GameManager.Data.SetEventFlag(scriptNum, 2);
+        Event.GetDialogueEventValues(evt, 2, out int nextId, out int lastId, out int joinId);
+        GameManager.Data.SetEventFlag(evt, 2);
         RestartDialogue(nextId, lastId, joinId);
     }
 
@@ -170,9 +173,9 @@ public class UIDialogue : UIBase
         string speaker = script.Speaker;
 
         if (position == Script.Position.Left)
-            GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
+            GetRawImage((int)RawImages.LeftImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineImageName(speaker));
         else if (position == Script.Position.Right)
-            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineCharacter(speaker));
+            GetRawImage((int)RawImages.RightImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineImageName(speaker));
 
         if (script.Type == Script.DialogType.Select2)
         {
@@ -184,6 +187,7 @@ public class UIDialogue : UIBase
             GetText((int)Texts.SpeakerText).text = mainChar;
             GetText((int)Texts.SelectText2_1).text = contents[0];
             GetText((int)Texts.SelectText2_2).text = contents[1];
+            evt = script.Event;
             eventOccurred = true;
         }
         else

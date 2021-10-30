@@ -11,6 +11,7 @@ public class MapController : MonoBehaviour
     private Dictionary<Vector2, Vector2Int[,]> paths;
     private GameObject selectedUnit = null;
     private List<UnitController> units = new List<UnitController>();
+    private UIBattle ui;
 
     private const float mapLeft = -10.0f;
     private const float mapRight = 2.0f;
@@ -27,8 +28,8 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Input.MouseAction -= OnMouseEvent;
         GameManager.Input.MouseAction += OnMouseEvent;
+        ui = GameObject.Find("Canvas").GetComponent<UIBattle>();
 
         cursor = GameManager.Resource.Instantiate("Prefab/Cursor", transform);
         
@@ -47,27 +48,33 @@ public class MapController : MonoBehaviour
             y += 1.0f;
         }
 
-        SetBattleScene();
+        InitScene();
         StartBattle();
     }
 
-    private void SetBattleScene()
+    private void InitScene()
     {
-        switch (GameManager.Data.Common.Battle)
+        GameManager.Data.Common.Scene = GameManager.Data.Common.NextScene;
+
+        switch (GameManager.Data.Common.Scene)
         {
-            case Define.Battle.GundamRising:
+            case Define.Scene.GundamRising:
                 inaccessible = new List<Vector2>() {
                     map[10, 2], map[10, 3], map[10, 4], map[10, 5], map[10, 6], map[10, 7],
                     map[11, 2], map[11, 3], map[11, 4], map[11, 5], map[11, 6], map[11, 7],
                     map[2, 4], map[3, 4], map[2, 5], map[3, 5], map[2, 2], map[2, 3]
                 };
 
-                GameManager.Data.Characters.Add(Define.Character.AmuroRay, new Character(
-                    Define.Character.AmuroRay, Define.Affiliation.EFSF, Define.Rank.SeamanRecruit, 0, 0));
+                GameManager.Data.Characters.Add(Define.Character.AmuroRayTutorial, new Character(
+                    Define.Character.AmuroRayTutorial, Define.Affiliation.EFSF, Define.Rank.SeamanRecruit, 0, 0));
 
-                CreateUnit(Define.Character.AmuroRay, Define.Mechanic.Gundam2, 7, 3);
                 CreateUnit(Define.Character.Denim, Define.Mechanic.Zaku2, Define.Affiliation.Zeon, Define.Rank.ChiefPettyOfficer, 2, 1, 6, 4);
                 CreateUnit(Define.Character.Gene, Define.Mechanic.Zaku2, Define.Affiliation.Zeon, Define.Rank.PettyOfficer2ndClass, 1, 1, 7, 4);
+
+                if (GameManager.Data.Common.MainCharacter == Define.Character.BrightNoa || GameManager.Data.Common.MainCharacter == Define.Character.RhysJeon)
+                    CreateUnit(Define.Character.AmuroRayTutorial, Define.Mechanic.Gundam2, 7, 3);
+                else
+                    CreateUnit(GameManager.Data.Common.MainCharacter, Define.Mechanic.Gundam1, 3, 3);
 
                 break;
         }
@@ -96,6 +103,9 @@ public class MapController : MonoBehaviour
 
     private void OnMouseEvent(Define.MouseEvent evt)
     {
+        if (ui.DialogueMode)
+            return;
+
         switch (evt)
         {
             case Define.MouseEvent.Hover:

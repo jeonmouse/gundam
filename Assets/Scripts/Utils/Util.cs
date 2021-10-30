@@ -86,27 +86,41 @@ public class Util
         }
     }
 
-
-    // Del?
-    public static Define.Character DefineCharacter(string name)
+    public static string DefineImageName(string name)
     {
         switch (name)
         {
             case "<MainCharacter>":
-            case "Select2":
-            case "Select3":
-                return GameManager.Data.Common.MainCharacter;
+                if (GameManager.Data.Common.MainCharacter == Define.Character.BrightNoa)
+                    return "BrightNoa";
+                else if (GameManager.Data.Common.MainCharacter == Define.Character.RhysJeon)
+                    return "RhysJeon";
+                else if (GameManager.Data.Common.MainCharacter == Define.Character.DominickWilliam)
+                    return "DominickWilliam";
+                else
+                    return "LeonMarcenas";
+            case "아무로":
+            case "Amuro":
+            case "アムロ":
+                if (GameManager.Data.Common.War == Define.War.TheOneYearWar)
+                {
+                    if (GameManager.Data.Common.Scene == Define.Scene.GundamRising)
+                        return "AmuroRayTutorial";
+                    else
+                        return "AmuroRayYoung";
+                }
+                else
+                    return "AmuroRay";
             case "템":
             case "Tem":
             case "テム":
-                return Define.Character.TemRay;
+                return "TemRay";
             case "파렐":
             case "Farrell":
             case "ファレル":
-                return Define.Character.FarrellIha;
+                return "FarrellIha";
             default:
-                return Define.Character.Nobody;
-
+                return "Nobody";
         }
     }
 }

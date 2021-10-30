@@ -56,11 +56,11 @@ public class DataManager
         return JsonUtility.FromJson<Loader>(textAsset.text);
     }
 
-    public void SetEventFlag(int id, int select)
+    public void SetEventFlag(Define.DialogueEvent evt, int select)
     {
-        switch (id)
+        switch (evt)
         {
-            case (int)Define.DialogueEvent.AskAmuroName:
+            case Define.DialogueEvent.AskAmuroName:
                 if (select == 1)
                     Common.AskAmuroName = false;
                 else

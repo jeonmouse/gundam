@@ -230,11 +230,20 @@ public class UISelection : UIBase
         GameManager.Sound.Play("Effect/Select");
         next = NextScene.Dialogue;
         GameManager.Data.Common.MainCharacter = mainChar;
+        GameManager.Data.Common.War = Define.War.TheOneYearWar;
 
         if (mainChar == Define.Character.BrightNoa || mainChar == Define.Character.RhysJeon)
-            GameManager.Data.Common.Dialogue = Define.Dialogue.TemRayRoom;
+        {
+            GameManager.Data.Characters.Add(mainChar, new Character(
+                    mainChar, Define.Affiliation.EFSF, Define.Rank.WarrantOfficer, 0, 0));
+            GameManager.Data.Common.NextScene = Define.Scene.TemRayRoom;
+        }
         else
-            GameManager.Data.Common.Dialogue = Define.Dialogue.GundamFactory;
+        {
+            GameManager.Data.Characters.Add(mainChar, new Character(
+                    mainChar, Define.Affiliation.EFSF, Define.Rank.PettyOfficer1stClass, 0, 0));
+            GameManager.Data.Common.NextScene = Define.Scene.GundamFactory;
+        }
 
         StartCoroutine(FadeOutCoroutine());
     }

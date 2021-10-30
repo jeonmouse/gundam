@@ -62,7 +62,7 @@ public class CharacterStatus
                 Management = 16;
                 Judgement = 17;
                 break;
-            case Define.Character.AmuroRay:
+            case Define.Character.AmuroRayYoung:
                 EnName = "Amuro";
                 JpName = "アムロ";
                 KrName = "아무로";
@@ -72,6 +72,28 @@ public class CharacterStatus
                 Leadership = 17;
                 Management = 15;
                 Judgement = 18;
+                break;
+            case Define.Character.AmuroRayTutorial:
+                EnName = "Amuro";
+                JpName = "アムロ";
+                KrName = "아무로";
+                Technic = 13;
+                Concentration = 13;
+                Reflex = 13;
+                Leadership = 12;
+                Management = 10;
+                Judgement = 13;
+                break;
+            case Define.Character.CharAznable:
+                EnName = "Char";
+                JpName = "シャア";
+                KrName = "샤아";
+                Technic = 19;
+                Concentration = 18;
+                Reflex = 19;
+                Leadership = 19;
+                Management = 17;
+                Judgement = 20;
                 break;
             case Define.Character.Denim:
                 EnName = "Denim";

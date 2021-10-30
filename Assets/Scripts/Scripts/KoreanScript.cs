@@ -4,14 +4,38 @@ using UnityEngine;
 
 public class KoreanScript : BaseScript
 {
+    public override List<Script> Init(Define.Scene scene)
+    {
+        return scene switch
+        {
+            Define.Scene.TemRayRoom => GetTemRayRoomScript(),
+            Define.Scene.GundamFactory => GetGundamFactoryScript(),
+            _ => null,
+        };
+    }
+
     public override List<Script> Init(Define.Dialogue dialogue)
     {
         return dialogue switch
         {
-            Define.Dialogue.TemRayRoom => GetTemRayRoomScript(),
-            Define.Dialogue.GundamFactory => GetGundamFactoryScript(),
+            Define.Dialogue.AmuroRideGundam => GetAmuroRideGundamScript(),
+            Define.Dialogue.MainCharacterRideGundam => GetMainCharacterRideGundam(),
             _ => null,
         };
+    }
+
+    public List<Script> GetMainCharacterRideGundam()
+    {
+        List<Script> scripts = new();
+
+        return scripts;
+    }
+
+    public List<Script> GetAmuroRideGundamScript()
+    {
+        List<Script> scripts = new();
+
+        return scripts;
     }
 
     public List<Script> GetTemRayRoomScript()
@@ -77,6 +101,7 @@ public class KoreanScript : BaseScript
         {
             Type = Script.DialogType.Select2,
             Place = Script.Position.Right,
+            Event = Define.DialogueEvent.AskAmuroName,
             Speaker = "<MainCharacter>",
             Content = "아드님이십니까?/아드님이시군요. 이름은 어떻게 되나요?"
         });

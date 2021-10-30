@@ -13,11 +13,12 @@ public class Define
 
     public enum Character
     {
-        Nobody = 0,
-        BrightNoa = 1, RhysJeon = 2, DominickWilliam = 3, LeonMarcenas = 4,
-        AmuroRay = 5,
-        TemRay = 5001, FarrellIha = 5002,
-        Denim = 15001, Gene = 15002
+        Nobody,
+        BrightNoa, RhysJeon, DominickWilliam, LeonMarcenas,
+        AmuroRay, AmuroRayYoung,
+        TemRay, FarrellIha, AmuroRayTutorial,
+        CharAznable,
+        Denim, Gene
     }
 
     public enum Mechanic
@@ -55,6 +56,11 @@ public class Define
         Admiral
     }
 
+    public enum War
+    {
+        TheOneYearWar
+    }
+
     public enum MouseEvent
     {
         Press,
@@ -79,25 +85,28 @@ public class Define
     }
     
 
+    public enum Scene
+    {
+        TemRayRoom,
+        GundamFactory,
+        GundamRising
+    }
+
     public enum Dialogue
     {
-        TemRayRoom = 0,
-        GundamFactory = 1000
+        MainCharacterRideGundam,
+        AmuroRideGundam
     }
 
     public enum DialogueEvent
     {
-        AskAmuroName = 7
+        AskAmuroName,
+        None
     }
 
     public enum DialoguePosition
     {
-        Left = 0,
-        Right = 1
-    }
-
-    public enum Battle
-    {
-        GundamRising
+        Left,
+        Right
     }
 }

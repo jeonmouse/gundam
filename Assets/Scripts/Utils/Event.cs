@@ -4,15 +4,15 @@ using UnityEngine;
 
 public static class Event
 {
-    public static void GetDialogueEventValues(int id, int select, out int nextId, out int lastId, out int joinId)
+    public static void GetDialogueEventValues(Define.DialogueEvent evt, int select, out int nextId, out int lastId, out int joinId)
     {
         nextId = 0;
         lastId = 0;
         joinId = 0;
 
-        switch (id)
+        switch (evt)
         {
-            case (int)Define.DialogueEvent.AskAmuroName:
+            case Define.DialogueEvent.AskAmuroName:
                 if (select == 1)
                 {
                     nextId = 8;
