@@ -37,7 +37,6 @@ public class UIBattle : UIBase
     private enum GameObjects
     {
         BarPanel,
-        ContentPanel,
         DialoguePanel,
         HPBar,
         ENBar
@@ -74,7 +73,6 @@ public class UIBattle : UIBase
         GetButton((int)Buttons.UnitButton).interactable = false;
         GetButton((int)Buttons.PilotButton).interactable = false;
         GetGameObject((int)GameObjects.BarPanel).SetActive(false);
-        GetGameObject((int)GameObjects.ContentPanel).SetActive(false);
         GetGameObject((int)GameObjects.DialoguePanel).SetActive(true);
 
         scripts = GameManager.Script.GetScripts(GameManager.Data.Environment.Language, dialogue);
@@ -88,7 +86,6 @@ public class UIBattle : UIBase
             GetButton((int)Buttons.UnitButton).interactable = true;
             GetButton((int)Buttons.PilotButton).interactable = true;
             GetGameObject((int)GameObjects.BarPanel).SetActive(true);
-            GetGameObject((int)GameObjects.ContentPanel).SetActive(false);
             GetGameObject((int)GameObjects.DialoguePanel).SetActive(false);
 
             return;
