@@ -35,6 +35,30 @@ public class JapaneseScript : BaseScript
     {
         List<Script> scripts = new();
 
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "アムロ",
+            Content = "こいつ、動くぞ。"
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "アムロ",
+            Content = "すごい、五倍以上のエネルギーゲインがある。"
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "アムロ",
+            Content = "やってみるさ。"
+        });
+
         return scripts;
     }
 

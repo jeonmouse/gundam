@@ -35,6 +35,30 @@ public class KoreanScript : BaseScript
     {
         List<Script> scripts = new();
 
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "아무로",
+            Content = "이녀석, 작동하잖아."
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "아무로",
+            Content = "굉장해. 5배 이상의 에너지 게인이 있어."
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "아무로",
+            Content = "해 보겠어."
+        });
+
         return scripts;
     }
 

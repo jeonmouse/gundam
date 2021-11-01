@@ -36,7 +36,7 @@ public class UIBattle : UIBase
 
     private enum GameObjects
     {
-        BarPanel,
+        UnitPanel,
         DialoguePanel,
         HPBar,
         ENBar
@@ -64,15 +64,17 @@ public class UIBattle : UIBase
         if (!DialogueMode)
             return;
 
-
+        if (evt == Define.MouseEvent.Click)
+        {
+            GameManager.Sound.Play("Effect/Flip");
+            SetScript();
+        }
     }
 
     public void StartDialogue(Define.Dialogue dialogue)
     {
         DialogueMode = true;
-        GetButton((int)Buttons.UnitButton).interactable = false;
-        GetButton((int)Buttons.PilotButton).interactable = false;
-        GetGameObject((int)GameObjects.BarPanel).SetActive(false);
+        GetGameObject((int)GameObjects.UnitPanel).SetActive(false);
         GetGameObject((int)GameObjects.DialoguePanel).SetActive(true);
 
         scripts = GameManager.Script.GetScripts(GameManager.Data.Environment.Language, dialogue);
@@ -83,9 +85,8 @@ public class UIBattle : UIBase
     {
         if (scriptNum > scripts.Count - 1)
         {
-            GetButton((int)Buttons.UnitButton).interactable = true;
-            GetButton((int)Buttons.PilotButton).interactable = true;
-            GetGameObject((int)GameObjects.BarPanel).SetActive(true);
+            DialogueMode = false;
+            GetGameObject((int)GameObjects.UnitPanel).SetActive(true);
             GetGameObject((int)GameObjects.DialoguePanel).SetActive(false);
 
             return;
@@ -98,5 +99,7 @@ public class UIBattle : UIBase
         GetText((int)Texts.SpeakerText).text = speaker;
         GetRawImage((int)RawImages.TargetImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineImageName(speaker));
         GetText((int)Texts.ScriptText).text = script.Content;
+
+        scriptNum++;
     }
 }

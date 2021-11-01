@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 543423853}
   - component: {fileID: 543423854}
   m_Layer: 5
-  m_Name: MechanicPanel
+  m_Name: UnitPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 601128988}
   - component: {fileID: 601128987}
   m_Layer: 5
-  m_Name: StatusPanel
+  m_Name: RightPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -951,7 +951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &994385870
 RectTransform:
   m_ObjectHideFlags: 0

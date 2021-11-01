@@ -35,6 +35,30 @@ public class EnglishScript : BaseScript
     {
         List<Script> scripts = new();
 
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "Amuro",
+            Content = "This will work."
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "Amuro",
+            Content = "Incredible. The energy gain is more than five times."
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "Amuro",
+            Content = "Let's give it a try."
+        });
+
         return scripts;
     }
 

@@ -14,7 +14,8 @@ public class Script
     public enum Position
     {
         Left,
-        Right
+        Right,
+        Battle
     }
 
     public enum DialogType
