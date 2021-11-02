@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class UIBattle : UIBase
     private int scriptNum = 0;
 
     public bool DialogueMode { get; set; } = false;
+    public Action StartBattle;
 
     private enum Texts
     {
@@ -88,7 +90,7 @@ public class UIBattle : UIBase
             DialogueMode = false;
             GetGameObject((int)GameObjects.UnitPanel).SetActive(true);
             GetGameObject((int)GameObjects.DialoguePanel).SetActive(false);
-
+            StartBattle();
             return;
         }
 

@@ -9,8 +9,9 @@ public class MapController : MonoBehaviour
     private GameObject cursor;
     private List<Vector2> inaccessible;
     private Dictionary<Vector2, Vector2Int[,]> paths;
+    private List<Vector2> enemyPosition;
     private GameObject selectedUnit = null;
-    private List<UnitController> units = new List<UnitController>();
+    private List<UnitController> units = new();
     private UIBattle ui;
     private Vector2 prePos = new(0f, 0f);
 
@@ -21,16 +22,17 @@ public class MapController : MonoBehaviour
 
     private enum Mode
     {
-        Selected = 0,
-        Moved = 1,
+        Select = 0,
+        Move = 1,
         Attack = 2
     }
-    private Mode mode = Mode.Selected;
+    private Mode mode = Mode.Select;
 
     private void Start()
     {
         GameManager.Input.MouseAction += OnMouseEvent;
         ui = GameObject.Find("Canvas").GetComponent<UIBattle>();
+        ui.StartBattle += StartBattle;
 
         cursor = GameManager.Resource.Instantiate("Prefab/Cursor", transform);
         
@@ -50,7 +52,6 @@ public class MapController : MonoBehaviour
         }
 
         InitScene();
-        StartBattle();
     }
 
     private void InitScene()
@@ -130,20 +131,29 @@ public class MapController : MonoBehaviour
         if (GetPivotPosition(ref position))
         {
             Collider2D collider = GetColliderFromPosition(position);
-            if (collider != null && selectedUnit == null)
+            if (collider != null && mode == Mode.Select)
             {
-                DisplayMoveRange(collider.gameObject, position);
                 selectedUnit = collider.gameObject;
+                DisplayMoveRange(position);
+                DisplayAttackRange(position);
                 GameManager.Sound.Play("Effect/Select");
+                mode = Mode.Move;
             }
-            else if (collider == null && selectedUnit != null)
+            else if (selectedUnit != null && mode == Mode.Move)
             {
-                if (!paths.ContainsKey(position))
-                    return;
-                
-                Vector2Int[,] parent = paths[position];
-                selectedUnit.GetComponent<UnitController>().Move(parent, position);
-                GameManager.Sound.Play("Effect/Select");
+                if (collider == null)
+                {
+                    if (!paths.ContainsKey(position))
+                        return;
+
+                    Vector2Int[,] parent = paths[position];
+                    selectedUnit.GetComponent<UnitController>().Move(parent, position);
+                    GameManager.Sound.Play("Effect/Select");
+                }
+                else
+                {
+                    // Range Attack
+                }
             }
         }
     }
@@ -170,12 +180,37 @@ public class MapController : MonoBehaviour
         }
     }
 
-    private void DisplayAttackRange(GameObject selectedUnit, Vector2 position)
+    private void DisplayAttackRange(Vector2 position)
     {
+        int range = mode == Mode.Select ?
+            selectedUnit.GetComponent<UnitController>().MechanicStatus.RangeDistance : 1;
+        enemyPosition = new();
 
+        for (int i = -range; i <= range; i++)
+        {
+            for (int j = -range; j <= range; j++)
+            {
+                if (Math.Abs(i) + Math.Abs(j) <= range)
+                {
+                    Vector2 pos = new(position.x + i, position.y + j);
+                    if (pos.x > mapRight || pos.x <= mapLeft ||
+                        pos.y > mapTop - 2.0f || pos.y <= mapBottom + 2.0f)
+                        continue;
+
+                    Collider2D collider = GetColliderFromPosition(pos);
+                    if (collider != null &&
+                        collider.gameObject.GetComponent<UnitController>().Pilot.Affiliation != selectedUnit.GetComponent<UnitController>().Pilot.Affiliation)
+                    {
+                        enemyPosition.Add(pos);
+                        GameObject attack = GameManager.Resource.Instantiate("Prefab/Attack", transform);
+                        attack.transform.position = new Vector2(pos.x, pos.y);
+                    }
+                }
+            }
+        }
     }
 
-    private void DisplayMoveRange(GameObject selectedUnit, Vector2 position)
+    private void DisplayMoveRange(Vector2 position)
     {
         int speed = selectedUnit.GetComponent<UnitController>().Speed;
         int boardSize = speed * 2 + 1;
@@ -189,7 +224,8 @@ public class MapController : MonoBehaviour
                 if (Math.Abs(i) + Math.Abs(j) <= speed)
                 {
                     Vector2 pos = new(position.x + i, position.y + j);
-                    if (pos.y > mapTop - 2.0f || pos.y <= mapBottom + 2.0f)
+                    if (pos.x > mapRight || pos.x <= mapLeft ||
+                        pos.y > mapTop - 2.0f || pos.y <= mapBottom + 2.0f)
                     {
                         block[i + speed, j + speed] = true;
                         continue;
