@@ -94,11 +94,10 @@ public class UIBattle : UIBase
 
         Script script = scripts[scriptNum];
         string speaker = script.Speaker;
-        speaker.Replace("<MainCharacter>", Util.GetMainCharacterName(GameManager.Data.Environment.Language, GameManager.Data.Common.MainCharacter));
 
-        GetText((int)Texts.SpeakerText).text = speaker;
+        GetText((int)Texts.SpeakerText).text = speaker.Replace("<MainCharacter>", Util.GetMainCharacterName(GameManager.Data.Environment.Language, GameManager.Data.Common.MainCharacter));
         GetRawImage((int)RawImages.TargetImage).texture = GameManager.Resource.Load<Texture2D>("Characters/" + Util.DefineImageName(speaker));
-        GetText((int)Texts.ScriptText).text = script.Content;
+        GetText((int)Texts.ScriptText).text = script.Content.Replace("<MainCharacter>", Util.GetMainCharacterName(GameManager.Data.Environment.Language, GameManager.Data.Common.MainCharacter));
 
         scriptNum++;
     }

@@ -28,6 +28,30 @@ public class KoreanScript : BaseScript
     {
         List<Script> scripts = new();
 
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "<MainCharacter>",
+            Content = "어떻게 자쿠가 여기에..."
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "<MainCharacter>",
+            Content = "이대로 있다간 다 죽겠어."
+        });
+
+        scripts.Add(new Script()
+        {
+            Type = Script.DialogType.Normal,
+            Place = Script.Position.Battle,
+            Speaker = "<MainCharacter>",
+            Content = "중위님께는 미안하지만 내가 먼저다!"
+        });
+
         return scripts;
     }
 

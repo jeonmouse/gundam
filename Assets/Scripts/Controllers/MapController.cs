@@ -12,6 +12,7 @@ public class MapController : MonoBehaviour
     private GameObject selectedUnit = null;
     private List<UnitController> units = new List<UnitController>();
     private UIBattle ui;
+    private Vector2 prePos = new(0f, 0f);
 
     private const float mapLeft = -10.0f;
     private const float mapRight = 2.0f;
@@ -133,6 +134,7 @@ public class MapController : MonoBehaviour
             {
                 DisplayMoveRange(collider.gameObject, position);
                 selectedUnit = collider.gameObject;
+                GameManager.Sound.Play("Effect/Select");
             }
             else if (collider == null && selectedUnit != null)
             {
@@ -141,6 +143,7 @@ public class MapController : MonoBehaviour
                 
                 Vector2Int[,] parent = paths[position];
                 selectedUnit.GetComponent<UnitController>().Move(parent, position);
+                GameManager.Sound.Play("Effect/Select");
             }
         }
     }
@@ -308,6 +311,8 @@ public class MapController : MonoBehaviour
                 cursor.SetActive(true);
 
             cursor.transform.position = position;
+            if (!prePos.Equals(position)) GameManager.Sound.Play("Effect/Hover");
+            prePos = position;
         }
         else
         {
