@@ -145,7 +145,7 @@ public class UISelection : UIBase
             GetText((int)Texts.LeonBirth).text = "生年: 0058 (U.C.)";
             GetText((int)Texts.LeonHeight).text = "身長: 183cm";
 
-            SetJapaneseFont();
+            //SetJapaneseFont();
         }
 
         SetMainCharacter("Bright");
