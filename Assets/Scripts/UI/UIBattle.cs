@@ -68,7 +68,8 @@ public class UIBattle : UIBase
 
         if (evt == Define.MouseEvent.Click)
         {
-            GameManager.Sound.Play("Effect/Flip");
+            //GameManager.Sound.Play("Effect/Flip");
+            GameManager.Sound.Play("Effect/Select");
             SetScript();
         }
     }

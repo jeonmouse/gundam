@@ -139,7 +139,8 @@ public class UIDialogue : UIBase
     {
         if (evt == Define.MouseEvent.Click && !eventOccurred && !buttonClicked)
         {
-            GameManager.Sound.Play("Effect/Flip");
+            //GameManager.Sound.Play("Effect/Flip");
+            GameManager.Sound.Play("Effect/Select");
             SetScript();
         }
 
